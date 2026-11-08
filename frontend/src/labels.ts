@@ -33,6 +33,11 @@ export const ACTION_TITLES: Record<string, string> = {
   spec_item_edited: "Позиция изменена",
   spec_item_added: "Позиция добавлена",
   spec_item_deleted: "Позиция удалена",
+  evidence_saved: "Доказательство сохранено",
+  price_from_site: "Цена с сайта",
+  site_mismatch: "Товар на сайте не подходит",
+  site_no_price: "На странице нет цены в разметке",
+  site_prices_done: "Сбор цен с сайтов завершён",
 };
 
 export const ACTOR_TITLES = { human: "Человек", agent: "Агент", system: "Система" } as const;

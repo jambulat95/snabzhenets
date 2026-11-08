@@ -24,6 +24,7 @@ import { api, type KtruCandidate, type Procurement, type SpecItem } from "../api
 import { useAuth } from "../auth";
 import AgentProgress from "../components/AgentProgress";
 import ConfirmAction from "../components/ConfirmAction";
+import PricesCard from "../components/PricesCard";
 import StatusTag from "../components/StatusTag";
 import { ACTION_TITLES, ACTOR_TITLES, STAGES, STATUS_TONE } from "../labels";
 
@@ -287,6 +288,8 @@ export default function ProcurementPage() {
           )}
         </Card>
       )}
+
+      {!["draft", "spec_review", "needs_human", "cancelled"].includes(p.status) && <PricesCard p={p} />}
 
       <Collapse
         items={[

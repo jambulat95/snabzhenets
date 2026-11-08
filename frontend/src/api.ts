@@ -124,6 +124,37 @@ export type ProcStatus =
   | "draft" | "spec_review" | "sourcing" | "collecting" | "analysis"
   | "justification_review" | "approved" | "closed" | "needs_human" | "cancelled";
 
+export interface Quote {
+  id: number;
+  spec_item_id: number;
+  channel: "site" | "email" | "eis_contract";
+  source_name: string;
+  region: string | null;
+  offer_name: string | null;
+  unit_price: string;
+  vat_mode: "with" | "without" | "unknown";
+  price_kind: string | null;
+  url: string | null;
+  captured_at: string;
+  extracted_by: string;
+  html_sha256: string | null;
+  screenshot_sha256: string | null;
+  match: { matches?: boolean; confidence?: string; differences?: string[]; reason?: string };
+  status: "ok" | "rejected" | "review";
+  notes: string[];
+}
+
+export interface EvidenceCheck {
+  ok: boolean;
+  sha256: string;
+  file_sha256: string | null;
+  in_journal: boolean;
+  reason: string | null;
+  url: string | null;
+  captured_at: string;
+  kind: string;
+}
+
 export interface Procurement {
   id: number;
   number: string | null;
@@ -139,5 +170,6 @@ export interface Procurement {
     suspicious?: string[];
   };
   items: SpecItem[];
+  quotes: Quote[];
   journal: JournalRow[];
 }
