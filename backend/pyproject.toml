@@ -61,3 +61,7 @@ ignore_missing_imports = true
 [tool.pytest.ini_options]
 pythonpath = [".", "eval"]
 testpaths = ["tests"]
+
+[tool.ruff.lint.flake8-bugbear]
+# FastAPI: Depends(...) в значениях по умолчанию — штатный способ
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query"]

@@ -3,10 +3,14 @@
 from fastapi import FastAPI
 from sqlalchemy import create_engine, text
 
+from .auth.router import router as auth_router
 from .config import settings
 from .redis_client import redis_client
+from .spec.router import router as spec_router
 
 app = FastAPI(title="Снабженец", version="0.1.0")
+app.include_router(auth_router)
+app.include_router(spec_router)
 _engine = create_engine(settings.database_url, pool_pre_ping=True)
 
 

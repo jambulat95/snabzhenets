@@ -9,6 +9,12 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+psycopg://snab:snab@localhost:5433/snabzhenets"
     redis_url: str = "redis://localhost:6380/0"
     secret_key: str = "dev-secret-change-me"
+    session_ttl_hours: int = 12
+    cookie_secure: bool = False
+    login_max_attempts: int = 5
+    login_lock_minutes: int = 15
+    login_rate_per_ip: int = 60
+    login_user_fail_limit: int = 30
 
     # Демо-режим: письма только на этот домен (CLAUDE.md, правило 1.6). Проверка — в порте почты
     demo_mode: bool = True
