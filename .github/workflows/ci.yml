@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
       - run: uv sync --frozen
-      - run: uv run ruff check app tests eval
+      - run: uv run ruff check app tests eval scripts
       - run: uv run mypy
       - run: uv run pytest -q
       - name: фильтр инъекций (без модели)
