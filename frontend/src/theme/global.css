@@ -1,0 +1,219 @@
+/* Дизайн-система по образцу maksmart.ru (docs/FRONTEND.md, раздел 3.3) */
+:root {
+  /* Бренд */
+  --c-brand: #08A553;          /* иконки, рамки, индикаторы, крупные цифры */
+  --c-brand-text: #07843F;     /* ссылки и зелёный текст (AA) */
+  --c-brand-bg: #E6F6EE;
+  --g-primary: linear-gradient(107.81deg, #2A852A 0%, #00775A 95.12%);
+  --g-primary-hover: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), var(--g-primary);
+
+  /* Текст */
+  --c-text-primary: #031912;
+  --c-text-body: #214237;
+  --c-text-secondary: #5D7069;
+  --c-text-disabled: #BCC6C3;
+  --c-text-inverse: #FFFFFF;
+
+  /* Поверхности */
+  --c-bg-page: #FFFFFF;
+  --c-bg-subtle: #F2F5F4;
+  --c-bg-dark: #031912;
+  --c-bg-toast: #214237;
+
+  /* Линии */
+  --c-border: #ECECEC;
+  --c-border-strong: #BCC6C3;
+  --c-divider: #E6E6E6;
+  --c-border-dark: #2B3234;
+
+  /* Статусы: текст / фон / сплошной */
+  --c-success: #067A3D;   --c-success-bg: #E6F6EE;   --c-success-solid: #08A553;
+  --c-warning: #A34E00;   --c-warning-bg: #FDF1E6;   --c-warning-solid: #EC7100;
+  --c-attention: #886815; --c-attention-bg: #FCF7E9; --c-attention-solid: #E3AE23;
+  --c-error: #C42727;     --c-error-bg: #FEEBEB;     --c-error-solid: #F13535;
+  --c-neutral: #5D7069;   --c-neutral-bg: #F2F5F4;   --c-neutral-solid: #BCC6C3;
+
+  /* Форма */
+  --r-xs: 4px;
+  --r-s: 6px;
+  --r-m: 8px;
+  --r-l: 12px;
+
+  --shadow-popup: 0 2px 18px rgba(0, 0, 0, .12);
+  --shadow-toast: 0 4px 4px rgba(0, 0, 0, .25), 0 8px 24px rgba(0, 0, 0, .16);
+
+  --font: "Golos Text", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg-page);
+  color: var(--c-text-primary);
+  font-family: var(--font);
+}
+
+.tabular,
+.ant-table .ant-table-cell.ant-table-cell-align-right,
+.ant-statistic-content {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Заголовки тонкие (400) — иерархия размером, а не весом (приём МаксМарта) */
+h1.ant-typography,
+h2.ant-typography,
+h3.ant-typography,
+h4.ant-typography,
+.ant-card-head-title,
+.ant-modal-title {
+  font-weight: 400 !important;
+}
+
+/* Основная кнопка — зелёный градиент */
+.ant-btn-primary:not(:disabled):not(.ant-btn-dangerous) {
+  background: var(--g-primary);
+  border: none;
+}
+.ant-btn-primary:not(:disabled):not(.ant-btn-dangerous):hover {
+  background: var(--g-primary-hover);
+}
+.ant-btn-primary:disabled {
+  background: var(--c-bg-subtle);
+  color: var(--c-text-disabled);
+  border: none;
+}
+
+/* Контурная кнопка МаксМарта */
+.ant-btn.btn-outlined {
+  background: transparent;
+  border: 1px solid var(--c-border);
+  color: var(--c-text-body);
+}
+.ant-btn.btn-outlined:not(:disabled):hover {
+  background: transparent;
+  border-color: var(--c-border-strong);
+  color: var(--c-brand-text);
+}
+.ant-btn.btn-outlined.btn-inverted {
+  border-color: var(--c-border-dark);
+  color: var(--c-text-inverse);
+}
+.ant-btn.btn-outlined.btn-inverted:not(:disabled):hover {
+  border-color: #5D7069;
+  color: var(--c-text-inverse);
+}
+
+/* Поля: без синего свечения при фокусе */
+.ant-input:focus,
+.ant-input-focused,
+.ant-input-affix-wrapper-focused,
+.ant-input-number-focused,
+.ant-select-focused .ant-select-selector {
+  box-shadow: none !important;
+}
+
+/* Карточки — без теней, рамка #ECECEC */
+.ant-card {
+  box-shadow: none;
+}
+.ant-card-bordered {
+  border-color: var(--c-border);
+}
+.card-subtle.ant-card {
+  background: var(--c-bg-subtle);
+  border-color: var(--c-bg-subtle);
+}
+
+/* Наведение на строку — ключевая ячейка зелёная (.mm-table--lightning-content-by-row-hover) */
+.ant-table-tbody > tr:hover .cell-key,
+.ant-table-tbody > tr:hover .cell-key a {
+  color: var(--c-brand-text);
+}
+.ant-table-tbody .cell-key a {
+  color: var(--c-text-primary);
+  font-weight: 500;
+}
+.table-clickable .ant-table-tbody > tr.ant-table-row {
+  cursor: pointer;
+}
+
+/* Тосты (message): тёмная подложка, белый текст */
+.ant-message .ant-message-notice-content {
+  background: var(--c-bg-toast) !important;
+  color: #fff;
+  box-shadow: var(--shadow-toast) !important;
+  border-radius: var(--r-s) !important;
+}
+
+/* Текст агента и контрагента — только как текст, переносы сохраняем */
+.pre-wrap {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Подсветка нового: 2 секунды */
+@keyframes flash-new {
+  from { background-color: var(--c-attention-bg); }
+  to { background-color: transparent; }
+}
+.flash-new {
+  animation: flash-new 2s ease-out;
+}
+
+/* Пульсирующая точка текущего шага агента */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.8); }
+}
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-brand);
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flash-new,
+  .pulse-dot {
+    animation: none;
+  }
+}
+
+/* Левое меню кабинета: активный пункт — зелёная полоса 3 px слева */
+.app-menu .ant-menu-item {
+  position: relative;
+  width: 100%;
+  margin-inline: 0;
+}
+.app-menu .ant-menu-item-selected::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--c-brand);
+}
+.app-menu .ant-menu-item .ant-menu-title-content a {
+  color: inherit;
+}
+
+/* Ссылки шапки и футера стартовой */
+.header-link {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--c-text-secondary);
+}
+.header-link:hover,
+.header-link:focus-visible {
+  color: var(--c-brand-text);
+}
+.footer-link {
+  color: #BCC6C3;
+}
+.footer-link:hover,
+.footer-link:focus-visible {
+  color: #fff;
+}

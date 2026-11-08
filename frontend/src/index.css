@@ -1,0 +1,29 @@
+/* Стили экранов поверх темы (токены — в theme/global.css) */
+
+/* Строка таблицы, которую агент не распознал (US-05: «помечено, а не додумано») */
+.row-unrecognized > td {
+  background: var(--c-error-bg) !important;
+}
+
+/* Строка, которую агент выбрал лучшей */
+.row-best > td {
+  background: var(--c-success-bg) !important;
+}
+
+/* Лучшее предложение — зелёная рамка 2 px (Э8) */
+.row-best-frame > td {
+  border-top: 2px solid var(--c-brand) !important;
+  border-bottom: 2px solid var(--c-brand) !important;
+}
+.row-best-frame > td:first-child {
+  border-left: 2px solid var(--c-brand);
+}
+.row-best-frame > td:last-child {
+  border-right: 2px solid var(--c-brand);
+}
+
+/* Не прошло отсекающие требования — приглушено цветом (не прозрачностью: контраст AA) */
+.row-muted > td,
+.row-muted > td span {
+  color: var(--c-text-secondary) !important;
+}
