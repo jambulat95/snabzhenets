@@ -1,0 +1,5 @@
+{
+  "_note": "Срез открытого реестра контрактов ЕИС (44-ФЗ) по демо-позициям. Пока пуст: zakupki.gov.ru не открывается с машины разработки (VPN). Заполняется по docs/SOURCES.md, раздел 4. Формат записи: reg_number, url, customer, customer_region, supplier_name, supplier_inn, signed_at, okpd2, ktru, item_name, unit_price, quantity.",
+  "captured_at": null,
+  "contracts": []
+}

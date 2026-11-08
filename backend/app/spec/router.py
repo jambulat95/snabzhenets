@@ -11,8 +11,18 @@ from sqlalchemy.orm import Session
 
 from .. import journal
 from ..auth.deps import get_current_user
+from ..config import settings
 from ..db import get_db
-from ..models import JournalEntry, PriceQuote, Procurement, SpecItem, User
+from ..models import (
+    Candidate,
+    InboundMessage,
+    JournalEntry,
+    OutboundMessage,
+    PriceQuote,
+    Procurement,
+    SpecItem,
+    User,
+)
 from ..pipeline import TITLES, Status, TransitionError, transition
 from ..queue import enqueue
 from . import ktru
@@ -89,6 +99,40 @@ class QuoteOut(BaseModel):
     notes: list[str]
 
 
+class CandidateOut(BaseModel):
+    id: int
+    supplier_id: int
+    name: str
+    region: str | None
+    city: str | None
+    email: str | None
+    is_demo: bool
+    source: str
+    contracts_44fz_3y: int
+    item_ids: list[int]
+    checks: list[dict[str, Any]]
+    verdict: str
+    selected: bool
+    rank: int
+    reason: str | None
+    request_status: str
+
+
+class MessageOut(BaseModel):
+    id: str
+    direction: str  # out / in
+    candidate_id: int | None
+    kind: str
+    address: str
+    subject: str
+    body: str
+    at: datetime | None
+    status: str
+    attachments: list[dict[str, Any]] = []
+    suspicious: list[str] = []
+    evidence_sha256: str | None = None
+
+
 class ProcurementOut(BaseModel):
     id: int
     number: str | None
@@ -101,18 +145,46 @@ class ProcurementOut(BaseModel):
     parse_meta: dict[str, Any]
     items: list[ItemOut] = []
     quotes: list[QuoteOut] = []
+    candidates: list[CandidateOut] = []
+    messages: list[MessageOut] = []
     journal: list[JournalOut] = []
+    time_shift_hours: int = 0
+    demo_mode: bool = True
 
 
 def to_out(p: Procurement, db: Session | None = None) -> ProcurementOut:
     out = ProcurementOut(
         id=p.id, number=p.number, title=p.title, status=p.status, status_title=TITLES[Status(p.status)],
         hold_reason=p.hold_reason, source_text=p.source_text, created_at=p.created_at, parse_meta=p.parse_meta or {},
+        time_shift_hours=p.time_shift_hours or 0, demo_mode=settings.demo_mode,
     )
     if db is not None:
         out.items = [ItemOut.model_validate(i, from_attributes=True) for i in p.items]
         quotes = db.scalars(select(PriceQuote).where(PriceQuote.procurement_id == p.id).order_by(PriceQuote.id))
         out.quotes = [QuoteOut.model_validate(q, from_attributes=True) for q in quotes]
+        cands = db.scalars(select(Candidate).where(Candidate.procurement_id == p.id).order_by(Candidate.rank))
+        out.candidates = [
+            CandidateOut(
+                id=c.id, supplier_id=c.supplier_id, name=c.supplier.name, region=c.supplier.region,
+                city=c.supplier.city, email=c.supplier.email, is_demo=c.supplier.is_demo, source=c.supplier.source,
+                contracts_44fz_3y=c.supplier.contracts_44fz_3y, item_ids=c.item_ids, checks=c.checks,
+                verdict=c.verdict, selected=c.selected, rank=c.rank, reason=c.reason, request_status=c.request_status,
+            )
+            for c in cands
+        ]
+        outs = db.scalars(select(OutboundMessage).where(OutboundMessage.procurement_id == p.id))
+        ins = db.scalars(select(InboundMessage).where(InboundMessage.procurement_id == p.id))
+        msgs = [
+            MessageOut(id=f"o{m.id}", direction="out", candidate_id=m.candidate_id, kind=m.kind, address=m.to_email,
+                       subject=m.subject, body=m.body, at=m.sent_at or m.created_at, status=m.status)
+            for m in outs
+        ] + [
+            MessageOut(id=f"i{m.id}", direction="in", candidate_id=m.candidate_id, kind=m.kind, address=m.from_email,
+                       subject=m.subject, body=m.body_text, at=m.received_at, status=m.status,
+                       attachments=m.attachments, suspicious=m.suspicious, evidence_sha256=m.evidence_sha256)
+            for m in ins
+        ]
+        out.messages = sorted(msgs, key=lambda m: m.at or p.created_at)
         rows = db.scalars(select(JournalEntry).where(JournalEntry.procurement_id == p.id).order_by(JournalEntry.seq))
         out.journal = [JournalOut.model_validate(r, from_attributes=True) for r in rows]
     return out
@@ -264,6 +336,7 @@ async def confirm_spec(
         raise err(409, "bad_transition", str(e)) from e
     db.commit()
     await enqueue("collect_site_prices", p.id)
+    await enqueue("source_suppliers", p.id)
     return to_out(p, db)
 
 
@@ -276,3 +349,22 @@ def ktru_catalog(user: User = Depends(get_current_user)) -> list[dict[str, Any]]
 def verify(user: User = Depends(get_current_user), db: Session = Depends(get_db)) -> dict[str, Any]:
     res = journal.verify_chain(db, user.org_id)
     return {"ok": res.ok, "checked": res.checked, "broken_seq": res.broken_seq, "reason": res.reason}
+
+
+class AccelerateIn(BaseModel):
+    hours: int = Field(default=24, ge=1, le=168)
+
+
+@router.post("/procurements/{pid}/accelerate", response_model=ProcurementOut)
+async def accelerate(pid: int, data: AccelerateIn, user: User = Depends(get_current_user),
+                     db: Session = Depends(get_db)) -> ProcurementOut:
+    """Демо: сдвинуть часы заявки вперёд — сработают напоминания и срок сбора, как будто прошло N часов."""
+    if not settings.demo_mode:
+        raise err(403, "demo_only", "Ускорение времени есть только в демо-режиме.")
+    p = get_own(db, pid, user)
+    p.time_shift_hours = (p.time_shift_hours or 0) + data.hours
+    journal.record(db, org_id=p.org_id, procurement_id=p.id, action="time_accelerated", actor_kind="human",
+                   actor_user_id=user.id, details={"hours": data.hours, "total_shift_h": p.time_shift_hours})
+    db.commit()
+    await enqueue("mail_tick")
+    return to_out(p, db)

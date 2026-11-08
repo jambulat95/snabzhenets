@@ -64,6 +64,8 @@ class Procurement(Base):
     collect_deadline: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     # Что агент вынес из текста помимо позиций: срок, требования, строки, которые могли потеряться
     parse_meta: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    # Демо: «Ускорить время» сдвигает часы заявки (таймеры напоминаний и срока сбора)
+    time_shift_hours: Mapped[int] = mapped_column(Integer, default=0)
 
     items: Mapped[list["SpecItem"]] = relationship(
         back_populates="procurement", order_by="SpecItem.line_no", cascade="all, delete-orphan"
@@ -163,3 +165,91 @@ class PriceQuote(Base):
     match: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     status: Mapped[str] = mapped_column(String(20))
     notes: Mapped[list[str]] = mapped_column(JSON, default=list)
+
+
+class Supplier(Base):
+    """Поставщик: найден в ЕИС (контракты), в истории заказчика или в демо-справочнике."""
+
+    __tablename__ = "suppliers"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    key: Mapped[str] = mapped_column(String(80), unique=True)  # ИНН или ключ демо-поставщика
+    inn: Mapped[str | None] = mapped_column(String(12))
+    name: Mapped[str] = mapped_column(String(300))
+    region: Mapped[str | None] = mapped_column(String(100))
+    city: Mapped[str | None] = mapped_column(String(100))
+    email: Mapped[str | None] = mapped_column(String(200))
+    phone: Mapped[str | None] = mapped_column(String(50))
+    address: Mapped[str | None] = mapped_column(String(300))
+    founders: Mapped[list[str]] = mapped_column(JSON, default=list)
+    egrul_status: Mapped[str | None] = mapped_column(String(20))  # active / liquidating / liquidated
+    in_rnp: Mapped[bool] = mapped_column(Boolean, default=False)
+    contracts_44fz_3y: Mapped[int] = mapped_column(Integer, default=0)
+    okpd2: Mapped[list[str]] = mapped_column(JSON, default=list)
+    source: Mapped[str] = mapped_column(String(20))  # eis / demo
+    is_demo: Mapped[bool] = mapped_column(Boolean, default=False)
+    meta: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+
+
+class Candidate(Base):
+    """Поставщик в заявке: что покрывает, откуда найден, проверки, выбран ли и почему."""
+
+    __tablename__ = "candidates"
+    __table_args__ = (UniqueConstraint("procurement_id", "supplier_id"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    procurement_id: Mapped[int] = mapped_column(ForeignKey("procurements.id", ondelete="CASCADE"), index=True)
+    supplier_id: Mapped[int] = mapped_column(ForeignKey("suppliers.id"))
+    item_ids: Mapped[list[int]] = mapped_column(JSON, default=list)
+    sources: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    checks: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)  # [{code, verdict, reason}]
+    verdict: Mapped[str] = mapped_column(String(10))  # allow / warn / human / deny
+    selected: Mapped[bool] = mapped_column(Boolean, default=False)
+    rank: Mapped[int] = mapped_column(Integer, default=0)
+    reason: Mapped[str | None] = mapped_column(Text)
+    request_status: Mapped[str] = mapped_column(String(20), default="none")  # none/queued/sent/reminded/replied
+    last_sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    replied_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+    supplier: Mapped[Supplier] = relationship()
+
+
+class OutboundMessage(Base):
+    """Исходящее письмо (outbox): пишется в транзакции шага, отправляется отдельной задачей."""
+
+    __tablename__ = "outbound_messages"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    procurement_id: Mapped[int] = mapped_column(ForeignKey("procurements.id", ondelete="CASCADE"), index=True)
+    candidate_id: Mapped[int | None] = mapped_column(ForeignKey("candidates.id", ondelete="CASCADE"))
+    kind: Mapped[str] = mapped_column(String(20))  # request / reminder / answer
+    to_email: Mapped[str] = mapped_column(String(200))
+    subject: Mapped[str] = mapped_column(String(300))
+    body: Mapped[str] = mapped_column(Text)
+    message_id: Mapped[str] = mapped_column(String(200), unique=True)
+    in_reply_to: Mapped[str | None] = mapped_column(String(200))
+    status: Mapped[str] = mapped_column(String(20), default="queued")  # queued / sent / blocked / failed
+    error: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class InboundMessage(Base):
+    """Входящее письмо: исходник — доказательство (sha256), разбор — дальше по конвейеру."""
+
+    __tablename__ = "inbound_messages"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    procurement_id: Mapped[int | None] = mapped_column(ForeignKey("procurements.id", ondelete="CASCADE"), index=True)
+    candidate_id: Mapped[int | None] = mapped_column(ForeignKey("candidates.id", ondelete="CASCADE"))
+    from_email: Mapped[str] = mapped_column(String(200))
+    subject: Mapped[str] = mapped_column(String(300))
+    message_id: Mapped[str] = mapped_column(String(200), unique=True)
+    in_reply_to: Mapped[str | None] = mapped_column(String(200))
+    received_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    body_text: Mapped[str] = mapped_column(Text)
+    attachments: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    evidence_sha256: Mapped[str | None] = mapped_column(String(64))
+    kind: Mapped[str] = mapped_column(String(20), default="new")  # offer / question / other / unmatched
+    status: Mapped[str] = mapped_column(String(20), default="new")  # new / parsed / needs_human
+    suspicious: Mapped[list[str]] = mapped_column(JSON, default=list)
