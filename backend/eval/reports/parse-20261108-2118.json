@@ -1,0 +1,3078 @@
+{
+ "summary": {
+  "cases": 20,
+  "rows": 103,
+  "row_accuracy": 0.9903,
+  "found": 1.0,
+  "name_ok": 1.0,
+  "quantity_ok": 0.9903,
+  "unit_ok": 1.0,
+  "extra_positions": 1,
+  "kind_accuracy": 1.0,
+  "errors": 0,
+  "by_category": {
+   "bearings": 1.0,
+   "belts": 1.0,
+   "electrical": 1.0,
+   "fasteners": 1.0,
+   "other": 1.0,
+   "pumps": 1.0,
+   "seals": 0.8571
+  },
+  "holdout_row_accuracy": 1.0,
+  "median_seconds": 0.9,
+  "max_seconds": 2.4,
+  "median_tokens": 1937,
+  "max_tokens": 4819,
+  "token_budget": 8000,
+  "cost_rub": 36.78,
+  "provider": "yandexgpt",
+  "over_budget": [],
+  "biggest": [
+   "R-016: 15 стр., 4819 ток.",
+   "R-007: 15 стр., 3325 ток.",
+   "R-009: 15 стр., 3076 ток.",
+   "R-015: 15 стр., 2852 ток.",
+   "R-017: 8 стр., 2392 ток."
+  ],
+  "threshold": 0.9
+ },
+ "cases": [
+  {
+   "case_id": "R-001",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-001",
+     "line": 1,
+     "category": "seals",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 1,
+      "name_keys": [
+       "14Х22Х4"
+      ],
+      "quantity": "50",
+      "unit": "шт",
+      "category": "seals"
+     },
+     "got": {
+      "line": 1,
+      "name": "КОЛЬЦО УПЛОТНИТЕЛЬНОЕ 14Х22Х4 NBR",
+      "quantity": "50",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-001",
+     "line": 2,
+     "category": "seals",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "USIT-R1.1/4"
+      ],
+      "quantity": "10",
+      "unit": "шт",
+      "category": "seals"
+     },
+     "got": {
+      "line": 2,
+      "name": "КОЛЬЦО УПЛОТНИТЕЛЬНОЕ USIT-R1.1/4\"",
+      "quantity": "10",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-001",
+     "line": 3,
+     "category": "seals",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "72",
+       "75Х90Х8"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "seals"
+     },
+     "got": {
+      "line": 3,
+      "name": "МАНЖЕТА АРМИРОВАННАЯ 75Х90Х8 72 NBR",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-002",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-002",
+     "line": 1,
+     "category": "other",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 1,
+      "name_keys": [
+       "420",
+       "DR-U4S-S"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "other"
+     },
+     "got": {
+      "line": 1,
+      "name": "Электродвигатель Cheonsel Kempion DR-U4S-S 420 Вт",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-002",
+     "line": 2,
+     "category": "pumps",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "ПП/SS316",
+       "DR-PHS-12"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "pumps"
+     },
+     "got": {
+      "line": 2,
+      "name": "Насосная часть Cheonsel Kempion DR-PHS-12 ПП/SS316 полипропилен",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-003",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-003",
+     "line": 3,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "3*1"
+      ],
+      "quantity": "10",
+      "unit": "м",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 3,
+      "name": "Кабель ВВГнг(А)-LS 3*1,5",
+      "quantity": "10",
+      "unit": "м",
+      "unit_raw": "м",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-003",
+     "line": 4,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "PE)-1",
+       "5*240мс(N"
+      ],
+      "quantity": "50",
+      "unit": "м",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 4,
+      "name": "Кабель ВВГнг(А)-LS 5*240мс(N,PE)-1",
+      "quantity": "50",
+      "unit": "м",
+      "unit_raw": "м.",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-004",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-004",
+     "line": 3,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "М12*70",
+       "М12х70"
+      ],
+      "quantity": "100",
+      "unit": "усл.ед",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 3,
+      "name": "Болт М12*70 Болт DIN 933 с шестигранной головкой, оцинкованный М12х70",
+      "quantity": "100",
+      "unit": "усл.ед",
+      "unit_raw": "Условная единица",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-004",
+     "line": 4,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "933",
+       "М8х50"
+      ],
+      "quantity": "100",
+      "unit": "усл.ед",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 4,
+      "name": "Болт DIN 933 с шестигранной головкой, оцинкованный М8х50",
+      "quantity": "100",
+      "unit": "усл.ед",
+      "unit_raw": "усл. ед.",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-005",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-005",
+     "line": 2,
+     "category": "pumps",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "42/70-10"
+      ],
+      "quantity": "8",
+      "unit": "шт",
+      "category": "pumps"
+     },
+     "got": {
+      "line": 2,
+      "name": "Насос садовый вибрационный \"Водонос\" 0,42/70-10 нижний забор воды",
+      "quantity": "8",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-005",
+     "line": 3,
+     "category": "pumps",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "3800",
+       "900Вт"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "pumps"
+     },
+     "got": {
+      "line": 3,
+      "name": "Насос поверхностный Sterwins 900Вт, 3800 л/ч",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-006",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-006",
+     "line": 3,
+     "category": "pumps",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "100-25",
+       "n=2900"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "pumps"
+     },
+     "got": {
+      "line": 3,
+      "name": "Электронасос \"Гном 100-25\" H=25 м, N=11 кВт, n=2900 об/мин",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-006",
+     "line": 4,
+     "category": "pumps",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "220V",
+       "V2200F"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "pumps"
+     },
+     "got": {
+      "line": 4,
+      "name": "Насос погружной Unipump Fekacut V2200F 2,2кВт 220V исполнение - нержавеющая сталь",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-007",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-007",
+     "line": 1,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 1,
+      "name_keys": [
+       "933",
+       "12х30"
+      ],
+      "quantity": "0.5",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 1,
+      "name": "Болт 12х30 оцинк. (DIN 933)",
+      "quantity": "0.5",
+      "unit": "кг",
+      "unit_raw": "Килограмм",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 2,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "933",
+       "12х40"
+      ],
+      "quantity": "1.1",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 2,
+      "name": "Болт 12х40 оцинк. (DIN 933)",
+      "quantity": "1.1",
+      "unit": "кг",
+      "unit_raw": "Килограмм",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 3,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "933",
+       "14*60"
+      ],
+      "quantity": "80",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 3,
+      "name": "БОЛТ 14*60 DIN 933 оцинк.",
+      "quantity": "80",
+      "unit": "кг",
+      "unit_raw": "Килограмм",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 4,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "933",
+       "16*40"
+      ],
+      "quantity": "50",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 4,
+      "name": "БОЛТ 16*40 DIN 933 оцинк.",
+      "quantity": "50",
+      "unit": "кг",
+      "unit_raw": "кг.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 5,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 5,
+      "name_keys": [
+       "933",
+       "16х100"
+      ],
+      "quantity": "6.12",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 5,
+      "name": "БОЛТ 16х100 DIN 933 оцинк",
+      "quantity": "6.12",
+      "unit": "кг",
+      "unit_raw": "Килограмм",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 6,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 6,
+      "name_keys": [
+       "933",
+       "16х70"
+      ],
+      "quantity": "100",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 6,
+      "name": "БОЛТ 16х70 DIN 933 оцинк",
+      "quantity": "100",
+      "unit": "кг",
+      "unit_raw": "кг",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 7,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 7,
+      "name_keys": [
+       "933",
+       "6х25"
+      ],
+      "quantity": "0.37",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 7,
+      "name": "Болт 6х25 оцинк. (DIN 933)",
+      "quantity": "0.37",
+      "unit": "кг",
+      "unit_raw": "кг",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 8,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 8,
+      "name_keys": [
+       "933",
+       "6х30"
+      ],
+      "quantity": "2",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 8,
+      "name": "Болт 6х30 оцинк. (DIN 933)",
+      "quantity": "2",
+      "unit": "кг",
+      "unit_raw": "кг",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 9,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 9,
+      "name_keys": [
+       "933",
+       "6х40"
+      ],
+      "quantity": "10",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 9,
+      "name": "Болт 6х40 оцинк. (DIN 933)",
+      "quantity": "10",
+      "unit": "кг",
+      "unit_raw": "кг",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 10,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 10,
+      "name_keys": [
+       "931-1",
+       "М12х55"
+      ],
+      "quantity": "352",
+      "unit": "шт",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 10,
+      "name": "Болт М12х55 оцинк DIN 931-1",
+      "quantity": "352",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 11,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 11,
+      "name_keys": [
+       "933",
+       "М18х120"
+      ],
+      "quantity": "40",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 11,
+      "name": "Болт М18х120 оцинк. DIN 933",
+      "quantity": "40",
+      "unit": "кг",
+      "unit_raw": "кг",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 12,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 12,
+      "name_keys": [
+       "933",
+       "М20х100"
+      ],
+      "quantity": "10.08",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 12,
+      "name": "Болт М20х100 DIN 933 оцинк.",
+      "quantity": "10.08",
+      "unit": "кг",
+      "unit_raw": "кг",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 13,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 13,
+      "name_keys": [
+       "933",
+       "М30х100"
+      ],
+      "quantity": "48",
+      "unit": "шт",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 13,
+      "name": "Болт М30х100 оцинк. (DIN 933)",
+      "quantity": "48",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 14,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 14,
+      "name_keys": [
+       "933",
+       "М4х25"
+      ],
+      "quantity": "0.43",
+      "unit": "шт",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 14,
+      "name": "Болт М4х25 (оцинк.) DIN 933",
+      "quantity": "0.43",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-007",
+     "line": 15,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 15,
+      "name_keys": [
+       "933",
+       "М5*16"
+      ],
+      "quantity": "0.66",
+      "unit": "кг",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 15,
+      "name": "Болт М5*16 оцинк. DIN 933",
+      "quantity": "0.66",
+      "unit": "кг",
+      "unit_raw": "Килограмм",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-008",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-008",
+     "line": 2,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "6208"
+      ],
+      "quantity": "6",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 2,
+      "name": "Подшипник 6208 (закрытого типа)",
+      "quantity": "6",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-008",
+     "line": 3,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "8106"
+      ],
+      "quantity": "6",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 3,
+      "name": "Подшипник 8106",
+      "quantity": "6",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-008",
+     "line": 4,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "696"
+      ],
+      "quantity": "8",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 4,
+      "name": "Подшипник 696",
+      "quantity": "8",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-009",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-009",
+     "line": 2,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "154-01-12280"
+      ],
+      "quantity": "3",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 2,
+      "name": "Подшипник Shantui 154-01-12280",
+      "quantity": "3",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 3,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "06040-06314"
+      ],
+      "quantity": "3",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 3,
+      "name": "Подшипник 06040-06314",
+      "quantity": "3",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 4,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "06040-06209"
+      ],
+      "quantity": "6",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 4,
+      "name": "Подшипник 06040-06209",
+      "quantity": "6",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 5,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 5,
+      "name_keys": [
+       "06040-06212"
+      ],
+      "quantity": "14",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 5,
+      "name": "Подшипник 06040-06212",
+      "quantity": "14",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 6,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 6,
+      "name_keys": [
+       "06030-06310"
+      ],
+      "quantity": "8",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 6,
+      "name": "Подшипник 06030-06310",
+      "quantity": "8",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 7,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 7,
+      "name_keys": [
+       "06000-06214"
+      ],
+      "quantity": "8",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 7,
+      "name": "Подшипник 06000-06214",
+      "quantity": "8",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 8,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 8,
+      "name_keys": [
+       "06000-06016"
+      ],
+      "quantity": "8",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 8,
+      "name": "Подшипник кольцевой 06000-06016",
+      "quantity": "8",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 9,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 9,
+      "name_keys": [
+       "01620-02016"
+      ],
+      "quantity": "8",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 9,
+      "name": "Подшипник игольчатый 01620-02016",
+      "quantity": "8",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 10,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 10,
+      "name_keys": [
+       "06120-02016"
+      ],
+      "quantity": "52",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 10,
+      "name": "Подшипник игольчатый 06120-02016",
+      "quantity": "52",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 11,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 11,
+      "name_keys": [
+       "175-03-C1280"
+      ],
+      "quantity": "3",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 11,
+      "name": "Подшипник 175-03-C1280",
+      "quantity": "3",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 12,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 12,
+      "name_keys": [
+       "06040-06310"
+      ],
+      "quantity": "6",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 12,
+      "name": "Подшипник 06040-06310",
+      "quantity": "6",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 13,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 13,
+      "name_keys": [
+       "06030-05206"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 13,
+      "name": "Подшипник 06030-05206",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-009",
+     "line": 14,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 14,
+      "name_keys": [
+       "175-13-21240"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 14,
+      "name": "Подшипник 175-13-21240",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-010",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-010",
+     "line": 3,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "C3",
+       "6206"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 3,
+      "name": "Подшипник 6206 ZZ C3",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-010",
+     "line": 4,
+     "category": "seals",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "30х44х7"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "seals"
+     },
+     "got": {
+      "line": 4,
+      "name": "Сальник ТС 30х44х7",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-011",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-011",
+     "line": 2,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "6024",
+       "30784809"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 2,
+      "name": "30784809 - ПОДШИПНИК 6024 C3",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-011",
+     "line": 3,
+     "category": "seals",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": false,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "30628487",
+       "65Х140Х10"
+      ],
+      "quantity": "61",
+      "unit": "усл.ед",
+      "category": "seals"
+     },
+     "got": {
+      "line": 3,
+      "name": "30628487 - МАНЖЕТА АРМИРОВАННАЯ 65Х140Х10 FKM, 61 Условная единица",
+      "quantity": null,
+      "unit": "усл.ед",
+      "unit_raw": "Условная единица",
+      "status": "needs_review",
+      "problems": [
+       "количество не указано"
+      ]
+     }
+    }
+   ],
+   "extras": [
+    {
+     "line": 2,
+     "name": "30784809 - ПОДШИПНИК 6024 C3",
+     "quantity": "2",
+     "unit": "шт",
+     "unit_raw": "Штука",
+     "status": "ok",
+     "problems": []
+    }
+   ],
+   "error": null
+  },
+  {
+   "case_id": "R-012",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-012",
+     "line": 2,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "850х8",
+       "ярт-1307171"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 2,
+      "name": "Ремень генератора МАЗ (850х8,5х8) ярт-1307171",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-012",
+     "line": 3,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "14х10х887"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 3,
+      "name": "Ремень водяного насоса МАЗ 14х10х887",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-012",
+     "line": 4,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "14х10х937"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 4,
+      "name": "Ремень компрессора ямз 14х10х937",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-012",
+     "line": 5,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 5,
+      "name_keys": [
+       "10012896"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 5,
+      "name": "Клиновой ремень 10012896",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-012",
+     "line": 6,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 6,
+      "name_keys": [
+       "498117623"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 6,
+      "name": "Клиновой ремень 498117623",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-013",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-013",
+     "line": 1,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 1,
+      "name_keys": [
+       "А-2000",
+       "1284.1-89"
+      ],
+      "quantity": "6",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 1,
+      "name": "Ремень приводной клиновой А-2000, ГОСТ 1284.1-89",
+      "quantity": "6",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-013",
+     "line": 2,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "SPZ-850",
+       "12841-89"
+      ],
+      "quantity": "18",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 2,
+      "name": "Ремень приводной клиновой SPZ-850 ГОСТ 12841-89",
+      "quantity": "18",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-013",
+     "line": 3,
+     "category": "seals",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "8752-79",
+       "2.1-30*42-1"
+      ],
+      "quantity": "16",
+      "unit": "шт",
+      "category": "seals"
+     },
+     "got": {
+      "line": 3,
+      "name": "Манжета армированная 2.1-30*42-1 ГОСТ 8752-79",
+      "quantity": "16",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-013",
+     "line": 4,
+     "category": "seals",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "8752-79",
+       "2.1-30*55-1"
+      ],
+      "quantity": "16",
+      "unit": "шт",
+      "category": "seals"
+     },
+     "got": {
+      "line": 4,
+      "name": "Манжета армированная 2.1-30*55-1 ГОСТ 8752-79",
+      "quantity": "16",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-014",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-014",
+     "line": 1,
+     "category": "pumps",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 1,
+      "name_keys": [
+       "GTCM2-B510"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "pumps"
+     },
+     "got": {
+      "line": 1,
+      "name": "РЕМКОМПЛЕКТ К НАСОСУ GTCM2-B510",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-014",
+     "line": 2,
+     "category": "pumps",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "GTCM2-B510-50/40-PVC-220V33"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "pumps"
+     },
+     "got": {
+      "line": 2,
+      "name": "ЦЕНТРОБЕЖНЫЙ НАСОС GTCM2-B510-50/40-PVC-220V33",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-015",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-015",
+     "line": 2,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "EJW33",
+       "№3318"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 2,
+      "name": "Подшипники №3318 EJW33",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 3,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "№22318",
+       "CC/P6W33"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 3,
+      "name": "Подшипники №22318 CC/P6W33",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 4,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "6314"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 4,
+      "name": "Подшипники 6314",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 5,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 5,
+      "name_keys": [
+       "6313"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 5,
+      "name": "Подшипники 6313",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 6,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 6,
+      "name_keys": [
+       "6312"
+      ],
+      "quantity": "6",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 6,
+      "name": "Подшипники 6312",
+      "quantity": "6",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 7,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 7,
+      "name_keys": [
+       "6307"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 7,
+      "name": "Подшипники 6307",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 8,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 8,
+      "name_keys": [
+       "6308"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 8,
+      "name": "Подшипники 6308",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 9,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 9,
+      "name_keys": [
+       "6322"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 9,
+      "name": "Подшипники 6322",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 10,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 10,
+      "name_keys": [
+       "6324"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 10,
+      "name": "Подшипники 6324",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 11,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 11,
+      "name_keys": [
+       "46",
+       "S6203-ZZ"
+      ],
+      "quantity": "16",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 11,
+      "name": "Подшипники ИНОТЕК S6203-ZZ 46",
+      "quantity": "16",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 12,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 12,
+      "name_keys": [
+       "46",
+       "S6200-ZZ"
+      ],
+      "quantity": "16",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 12,
+      "name": "Подшипники ИНОТЕК S6200-ZZ 46",
+      "quantity": "16",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 13,
+     "category": "fasteners",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 13,
+      "name_keys": [
+       "М10Х1-А2",
+       "DIN3404//A2"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "fasteners"
+     },
+     "got": {
+      "line": 13,
+      "name": "Масленка М10Х1-А2 DIN3404//A2",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 14,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 14,
+      "name_keys": [
+       "8206",
+       "7872-89"
+      ],
+      "quantity": "24",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 14,
+      "name": "Подшипники 8206 ГОСТ 7872-89",
+      "quantity": "24",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-015",
+     "line": 15,
+     "category": "bearings",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 15,
+      "name_keys": [
+       "8109",
+       "7872-89"
+      ],
+      "quantity": "24",
+      "unit": "шт",
+      "category": "bearings"
+     },
+     "got": {
+      "line": 15,
+      "name": "Подшипники 8109 ГОСТ 7872-89",
+      "quantity": "24",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-016",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-016",
+     "line": 1,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 1,
+      "name_keys": [
+       "ЕТ011805",
+       "12-040150"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 1,
+      "name": "Пускатель ПМ 12-040150 УХЛ 4 В, 1з, 380В, 50 Гц, IP 20 Электротехник арт. ЕТ011805 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 2,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "BTM00020464",
+       "12-040100-380АС-УХЛ4-В"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 2,
+      "name": "Пускатель ПМ 12-040100-380АС-УХЛ4-В КЭАЗ арт. BTM00020464 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 3,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "ЕТ007011",
+       "12-040100-380АС-УХЛ"
+      ],
+      "quantity": "10",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 3,
+      "name": "Пускатель ПМ 12-040100-380АС-УХЛ 4 3з+2р Электротехник арт. ЕТ007011 или эквивалент",
+      "quantity": "10",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 4,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "380В/50Гц",
+       "ПМ12-025200"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 4,
+      "name": "Пускатель ПМ12-025200 УХЛ4 380В/50Гц 1з 25А нереверсивный с реле РТТ-131 21.2-28,7А Электротехник арт. ЕТ007027 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 5,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 5,
+      "name_keys": [
+       "4з+6р",
+       "PM1E15Q"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 5,
+      "name": "Пускатель ПМЕ 113 380 В 4з+6р УХЛ4 Класс Б ТЭ EURO Texenergo арт. PM1E15Q или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 6,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 6,
+      "name_keys": [
+       "ПМЕ-211",
+       "080211100ВВ380000000"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 6,
+      "name": "Пускатель ПМЕ-211 КЗЭА УХЛ4 В 380В (2з+2р) арт. 080211100ВВ380000000 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 7,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 7,
+      "name_keys": [
+       "BTM00059450",
+       "ПМЕ-311-40А-220АС-(2з+2р)-УХЛ4-В"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 7,
+      "name": "Пускатель ПМЕ-311-40А-220АС-(2з+2р)-УХЛ4-В ВТМ арт. BTM00059450 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 8,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 8,
+      "name_keys": [
+       "ПМ12-025101",
+       "040101010ВВЗ80000010"
+      ],
+      "quantity": "10",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 8,
+      "name": "Пускатель ПМ12-025101 380В 50Гц 2з+2р Электротехник арт. 040101010ВВЗ80000010 или эквивалент",
+      "quantity": "10",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 9,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 9,
+      "name_keys": [
+       "ПМ12-025500",
+       "PM2K025Q7C20-K500"
+      ],
+      "quantity": "10",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 9,
+      "name": "Пускатель ПМ12-025500 380В 50Гц 2з Texenergo арт. PM2K025Q7C20-K500 или эквивалент",
+      "quantity": "10",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 10,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 10,
+      "name_keys": [
+       "12-025500",
+       "PM1K025Q50"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 10,
+      "name": "Пускатель ПМ 12-025500 У3 В IP00 2з+2р 380 АС Texenergo арт. PM1K025Q50 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 11,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 11,
+      "name_keys": [
+       "0А)-УХЛ4-В-EURO",
+       "ПМЕ-312-40А-110АС-(2з+2р)-РТЛ2055-2(30"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 11,
+      "name": "Пускатель ПМЕ-312-40А-110АС-(2з+2р)-РТЛ2055-2(30,0-40,0А)-УХЛ4-В-EURO ВТМ арт. ВТМ00080989 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 12,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 12,
+      "name_keys": [
+       "0А)-УХЛ4-Б-EURO",
+       "ПМЕ-012-10А-380АС-(1з)-РТЛ1014-2(7"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 12,
+      "name": "Пускатель ПМЕ-012-10А-380АС-(1з)-РТЛ1014-2(7,0-10,0А)-УХЛ4-Б-EURO ВТМ арт. ВТМ00073725 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 13,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 13,
+      "name_keys": [
+       "IP00",
+       "ВТМ00052310"
+      ],
+      "quantity": "10",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 13,
+      "name": "Пускатель ПМЛ 1501 IP00 110В, 50Гц ВТМ арт. ВТМ00052310 или эквивалент",
+      "quantity": "10",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 14,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 14,
+      "name_keys": [
+       "12-010651",
+       "ВТМ00076126"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 14,
+      "name": "Пускатель ПМ 12-010651 У2 В IP40 2з+2р 380АС ВТМ арт. ВТМ00076126 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-016",
+     "line": 15,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 15,
+      "name_keys": [
+       "ЕТ011802",
+       "ПМ12-025100"
+      ],
+      "quantity": "5",
+      "unit": "шт",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 15,
+      "name": "Пускатель ПМ12-025100 220В УХЛ4 3з+2р Электротехник арт. ЕТ011802 или эквивалент",
+      "quantity": "5",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-017",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-017",
+     "line": 1,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 1,
+      "name_keys": [
+       "1284-89",
+       "А-1700-ГОСТ"
+      ],
+      "quantity": "6",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 1,
+      "name": "ремень приводной клиновой А-1700-ГОСТ 1284-89",
+      "quantity": "6",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-017",
+     "line": 2,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "1284-89",
+       "А-1250-ГОСТ"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 2,
+      "name": "ремень приводной клиновой А-1250-ГОСТ 1284-89",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-017",
+     "line": 3,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "1284-89",
+       "А-1100-ГОСТ"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 3,
+      "name": "ремень приводной клиновой А-1100-ГОСТ 1284-89",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-017",
+     "line": 4,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "1284-89",
+       "А-1000-ГОСТ"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 4,
+      "name": "ремень приводной клиновой А-1000-ГОСТ 1284-89",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "шт.",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-017",
+     "line": 5,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 5,
+      "name_keys": [
+       "1284-89",
+       "А-950-ГОСТ"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 5,
+      "name": "ремень приводной клиновой А-950-ГОСТ 1284-89",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-017",
+     "line": 6,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 6,
+      "name_keys": [
+       "1284-89",
+       "А-850-ГОСТ"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 6,
+      "name": "ремень приводной клиновой А-850-ГОСТ 1284-89",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-018",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-018",
+     "line": 3,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "900"
+      ],
+      "quantity": "3",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 3,
+      "name": "Ремень клиновой XSVB XPZ 900 Lp",
+      "quantity": "3",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-018",
+     "line": 4,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "1250"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 4,
+      "name": "Ремень клиновой SVB 1250 SPA",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-018",
+     "line": 5,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 5,
+      "name_keys": [
+       "1250"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 5,
+      "name": "Ремень клиновой SVB 1250 SPZ",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-018",
+     "line": 6,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 6,
+      "name_keys": [
+       "1320"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 6,
+      "name": "Ремень клиновой SVB 1320 SPZ",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "Штука",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-018",
+     "line": 7,
+     "category": "belts",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 7,
+      "name_keys": [
+       "2240"
+      ],
+      "quantity": "4",
+      "unit": "шт",
+      "category": "belts"
+     },
+     "got": {
+      "line": 7,
+      "name": "Ремень клиновой SVB 2240 SPA",
+      "quantity": "4",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-019",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-019",
+     "line": 1,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 1,
+      "name_keys": [
+       "4*150-1"
+      ],
+      "quantity": "0.024",
+      "unit": "км",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 1,
+      "name": "Кабель ВВГнг(А)-LS 4*150-1",
+      "quantity": "0.024",
+      "unit": "км",
+      "unit_raw": "км",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-019",
+     "line": 2,
+     "category": "electrical",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 2,
+      "name_keys": [
+       "PE)-1",
+       "5*240мс(N"
+      ],
+      "quantity": "0.07",
+      "unit": "км",
+      "category": "electrical"
+     },
+     "got": {
+      "line": 2,
+      "name": "Кабель ВВГнг(А)-LS 5*240мс(N,PE)-1",
+      "quantity": "0.07",
+      "unit": "км",
+      "unit_raw": "км",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  },
+  {
+   "case_id": "R-020",
+   "source": "roseltorg",
+   "kind_ok": true,
+   "rows": [
+    {
+     "case_id": "R-020",
+     "line": 3,
+     "category": "pumps",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 3,
+      "name_keys": [
+       "м3/час",
+       "БГ11-25А"
+      ],
+      "quantity": "1",
+      "unit": "шт",
+      "category": "pumps"
+     },
+     "got": {
+      "line": 3,
+      "name": "Агрегат насосный БГ11-25А мощность 5,5 кВт, 1500 об/мин, давление 25 атм, подача 6,3 м3/час",
+      "quantity": "1",
+      "unit": "шт",
+      "unit_raw": "шт",
+      "status": "ok",
+      "problems": []
+     }
+    },
+    {
+     "case_id": "R-020",
+     "line": 4,
+     "category": "pumps",
+     "found": true,
+     "name_ok": true,
+     "qty_ok": true,
+     "unit_ok": true,
+     "expected": {
+      "line": 4,
+      "name_keys": [
+       "40",
+       "220"
+      ],
+      "quantity": "2",
+      "unit": "шт",
+      "category": "pumps"
+     },
+     "got": {
+      "line": 4,
+      "name": "Насос для перекачки масла с ремкомплектом 220 V, 40 л/мин",
+      "quantity": "2",
+      "unit": "шт",
+      "unit_raw": "штук",
+      "status": "ok",
+      "problems": []
+     }
+    }
+   ],
+   "extras": [],
+   "error": null
+  }
+ ]
+}

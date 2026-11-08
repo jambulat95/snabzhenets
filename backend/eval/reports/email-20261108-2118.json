@@ -1,0 +1,681 @@
+{
+ "summary": {
+  "letters": 12,
+  "lines": 22,
+  "found": 1.0,
+  "price_ok": 1.0,
+  "line_ok": 1.0,
+  "extra_lines": 0,
+  "auto_decision_ok": 1.0,
+  "letter_checks_ok": [],
+  "median_seconds": 1.5,
+  "max_tokens": 1008,
+  "cost_rub": 7.87,
+  "provider": "yandexgpt",
+  "errors": 0
+ },
+ "letters": [
+  {
+   "case": "E-001",
+   "note": "нумерованный список, подпись с контактами",
+   "confidence": 1.0,
+   "auto": true,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 1002,
+   "seconds": 2.2,
+   "error": null,
+   "notes": []
+  },
+  {
+   "case": "E-002",
+   "note": "цены с НДС 22 % — пересчитываем, но в таблицу сами не пускаем (с 22.10)",
+   "confidence": 0.6,
+   "auto": false,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 833,
+   "seconds": 1.4,
+   "error": null,
+   "notes": [
+    "Строка 1: у цены 262,30 не сказано, что она за единицу — проверьте.",
+    "Строка 2: у цены 274,50 не сказано, что она за единицу — проверьте.",
+    "Цены в письме с НДС — пересчитаны без НДС (22 %), проверьте."
+   ]
+  },
+  {
+   "case": "E-003",
+   "note": "аналог вместо отсутствующего, частичный ответ — без «за единицу» у цены идёт снабженцу (белый список с 22.10)",
+   "confidence": 0.6,
+   "auto": false,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 862,
+   "seconds": 1.5,
+   "error": null,
+   "notes": [
+    "Строка 2: у цены 530 не сказано, что она за единицу — проверьте.",
+    "Строка 3: в письме цены нет."
+   ]
+  },
+  {
+   "case": "E-004",
+   "note": "цена за упаковку",
+   "confidence": 1.0,
+   "auto": true,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 856,
+   "seconds": 1.6,
+   "error": null,
+   "notes": []
+  },
+  {
+   "case": "E-005",
+   "note": "таблица с табуляцией в тексте письма — кабель в метрах, а у колонки только «Цена»: без явной единицы — снабженцу (с 22.10)",
+   "confidence": 0.6,
+   "auto": false,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": true,
+    "delivery_price": null
+   },
+   "tokens": 1008,
+   "seconds": 2.1,
+   "error": null,
+   "notes": [
+    "Строка 1: у цены 96,50 не сказано, что она за единицу — проверьте.",
+    "Строка 2: у цены 512 не сказано, что она за единицу — проверьте.",
+    "Строка 3: у цены 2 340 не сказано, что она за единицу — проверьте."
+   ]
+  },
+  {
+   "case": "E-006",
+   "note": "в письме цена и сумма — нужна цена — умножение — косвенное доказательство: без других предложений в сделке — снабженцу (с 22.10)",
+   "confidence": 0.6,
+   "auto": false,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": true
+   },
+   "tokens": 846,
+   "seconds": 1.5,
+   "error": null,
+   "notes": [
+    "Строка 1: у цены 185 не сказано, что она за единицу — проверьте.",
+    "Строка 2: у цены 410 не сказано, что она за единицу — проверьте."
+   ]
+  },
+  {
+   "case": "E-007",
+   "note": "свободный текст — без «за единицу» у цены идёт снабженцу (белый список с 22.10)",
+   "confidence": 0.6,
+   "auto": false,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 939,
+   "seconds": 1.9,
+   "error": null,
+   "notes": [
+    "Строка 1: у цены 320 не сказано, что она за единицу — проверьте.",
+    "Строка 2: у цены 365 не сказано, что она за единицу — проверьте.",
+    "Строка 3: у цены 890 не сказано, что она за единицу — проверьте."
+   ]
+  },
+  {
+   "case": "E-008",
+   "note": "цен в письме нет",
+   "confidence": 0.0,
+   "auto": false,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 564,
+   "seconds": 0.4,
+   "error": null,
+   "notes": [
+    "Строка 1: в письме цены нет."
+   ]
+  },
+  {
+   "case": "E-009",
+   "note": "одна позиция — «цена по запросу» — без «за единицу» у цены идёт снабженцу (белый список с 22.10)",
+   "confidence": 0.6,
+   "auto": false,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 712,
+   "seconds": 1.1,
+   "error": null,
+   "notes": [
+    "Строка 1: у цены 48 900 не сказано, что она за единицу — проверьте.",
+    "Строка 2: в письме цены нет."
+   ]
+  },
+  {
+   "case": "E-010",
+   "note": "разделители тысяч и копейки",
+   "confidence": 1.0,
+   "auto": true,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 700,
+   "seconds": 1.0,
+   "error": null,
+   "notes": []
+  },
+  {
+   "case": "E-011",
+   "note": "ответ на часть строк, остальное «уточним» — без «за единицу» у цены идёт снабженцу (белый список с 22.10)",
+   "confidence": 0.6,
+   "auto": false,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 842,
+   "seconds": 1.5,
+   "error": null,
+   "notes": [
+    "Строка 1: у цены 41 не сказано, что она за единицу — проверьте.",
+    "Строка 2: у цены 6,90 не сказано, что она за единицу — проверьте.",
+    "Строка 3: в письме цены нет."
+   ]
+  },
+  {
+   "case": "E-012",
+   "note": "и «с НДС», и «без НДС» — проверит снабженец",
+   "confidence": 0.6,
+   "auto": false,
+   "auto_ok": true,
+   "extra_lines": [],
+   "checks": {
+    "valid_days": null,
+    "delivery_price": null
+   },
+   "tokens": 675,
+   "seconds": 0.9,
+   "error": null,
+   "notes": [
+    "Строка 1: у цены 488 не сказано, что она за единицу — проверьте.",
+    "В письме и «с НДС», и «без НДС» — проверьте цены."
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "case": "E-001",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "238",
+    "availability": "in_stock"
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Подшипник 6205-2RS",
+    "quantity": "10",
+    "unit": "шт",
+    "price": "238",
+    "is_analog": false,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-001",
+   "line": "2",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "355",
+    "availability": "in_stock"
+   },
+   "got": {
+    "request_line_no": 2,
+    "name": "Ремень SPZ-1000",
+    "quantity": "4",
+    "unit": "шт",
+    "price": "355",
+    "is_analog": false,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-001",
+   "line": "3",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "56.40",
+    "availability": "to_order",
+    "delivery_days": 10
+   },
+   "got": {
+    "request_line_no": 3,
+    "name": "Манжета 1.2-40х62-1",
+    "quantity": "50",
+    "unit": "шт",
+    "price": "56.40",
+    "is_analog": false,
+    "availability": "to_order",
+    "delivery_days": 10
+   }
+  },
+  {
+   "case": "E-002",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "215.00"
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Подшипник 6304-2RS",
+    "quantity": "20",
+    "unit": "шт",
+    "price": "215.00",
+    "is_analog": false,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-002",
+   "line": "2",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "225.00"
+   },
+   "got": {
+    "request_line_no": 2,
+    "name": "Ремень A-1250",
+    "quantity": "6",
+    "unit": "шт",
+    "price": "225.00",
+    "is_analog": false,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-003",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "412",
+    "availability": "in_stock",
+    "is_analog": true
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Подшипник 6206-2RS SKF",
+    "quantity": "8",
+    "unit": "шт",
+    "price": "412",
+    "is_analog": true,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-003",
+   "line": "2",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "530",
+    "delivery_days": 14
+   },
+   "got": {
+    "request_line_no": 2,
+    "name": "Подшипник 6305-2RS",
+    "quantity": "4",
+    "unit": "шт",
+    "price": "530",
+    "is_analog": false,
+    "availability": "to_order",
+    "delivery_days": 14
+   }
+  },
+  {
+   "case": "E-004",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "1850",
+    "unit": "упак",
+    "pack_size": "100"
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Болт М10х40 DIN 933 8.8",
+    "quantity": "2",
+    "unit": "упак",
+    "price": "1850",
+    "is_analog": false,
+    "pack_size": "100",
+    "availability": "to_order"
+   }
+  },
+  {
+   "case": "E-004",
+   "line": "2",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "3.20"
+   },
+   "got": {
+    "request_line_no": 2,
+    "name": "Гайка М10 DIN 934",
+    "quantity": "200",
+    "unit": "шт",
+    "price": "3.20",
+    "is_analog": false,
+    "availability": "to_order"
+   }
+  },
+  {
+   "case": "E-005",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "96.50",
+    "availability": "in_stock"
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Кабель ВВГнг-LS 3х2,5",
+    "quantity": "100",
+    "unit": "м",
+    "price": "96.50",
+    "is_analog": true,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-005",
+   "line": "2",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "512",
+    "availability": "in_stock"
+   },
+   "got": {
+    "request_line_no": 2,
+    "name": "Автомат ВА47-29 3P 16А",
+    "quantity": "6",
+    "unit": "шт",
+    "price": "512",
+    "is_analog": true,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-005",
+   "line": "3",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "2340",
+    "availability": "to_order",
+    "delivery_days": 14
+   },
+   "got": {
+    "request_line_no": 3,
+    "name": "Пускатель ПМЛ 1220",
+    "quantity": "2",
+    "unit": "шт",
+    "price": "2340",
+    "is_analog": false,
+    "availability": "to_order",
+    "delivery_days": 14
+   }
+  },
+  {
+   "case": "E-006",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "185"
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Подшипник 6204-2RS",
+    "quantity": "20",
+    "unit": "шт",
+    "price": "185",
+    "is_analog": false
+   }
+  },
+  {
+   "case": "E-006",
+   "line": "2",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "410"
+   },
+   "got": {
+    "request_line_no": 2,
+    "name": "Ремень B-1000",
+    "quantity": "4",
+    "unit": "шт",
+    "price": "410",
+    "is_analog": false
+   }
+  },
+  {
+   "case": "E-007",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "320",
+    "availability": "in_stock"
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Подшипник 6208-2RS",
+    "quantity": "10",
+    "unit": "шт",
+    "price": "320",
+    "is_analog": false,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-007",
+   "line": "2",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "365",
+    "availability": "in_stock"
+   },
+   "got": {
+    "request_line_no": 2,
+    "name": "Подшипник 6209-2RS",
+    "quantity": "10",
+    "unit": "шт",
+    "price": "365",
+    "is_analog": false,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-007",
+   "line": "3",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "890",
+    "delivery_days": 7
+   },
+   "got": {
+    "request_line_no": 3,
+    "name": "Ремень C-2240",
+    "quantity": "2",
+    "unit": "шт",
+    "price": "890",
+    "is_analog": false,
+    "availability": "to_order",
+    "delivery_days": 7
+   }
+  },
+  {
+   "case": "E-009",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "48900",
+    "availability": "to_order",
+    "delivery_days": 30
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Насос К 65-50-160",
+    "quantity": "1",
+    "unit": "шт",
+    "price": "48900",
+    "is_analog": false,
+    "availability": "to_order",
+    "delivery_days": 30
+   }
+  },
+  {
+   "case": "E-010",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "12450.00",
+    "availability": "in_stock"
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Электродвигатель АИР 80 В4 1,5 кВт",
+    "quantity": "2",
+    "unit": "шт",
+    "price": "12450.00",
+    "is_analog": false,
+    "availability": "in_stock"
+   }
+  },
+  {
+   "case": "E-011",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "41"
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Манжета 1.1-25х42-1",
+    "quantity": "20",
+    "unit": "шт",
+    "price": "41",
+    "is_analog": false
+   }
+  },
+  {
+   "case": "E-011",
+   "line": "2",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "6.90"
+   },
+   "got": {
+    "request_line_no": 2,
+    "name": "Кольцо 025-029-25",
+    "quantity": "100",
+    "unit": "шт",
+    "price": "6.90",
+    "is_analog": false
+   }
+  },
+  {
+   "case": "E-012",
+   "line": "1",
+   "found": true,
+   "price_ok": true,
+   "fields_ok": true,
+   "gold": {
+    "price": "488"
+   },
+   "got": {
+    "request_line_no": 1,
+    "name": "Ремень SPA-1250",
+    "quantity": "5",
+    "unit": "шт",
+    "price": "488",
+    "is_analog": false
+   }
+  }
+ ]
+}

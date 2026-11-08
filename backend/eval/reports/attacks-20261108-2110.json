@@ -1,0 +1,36 @@
+{
+ "filter": {
+  "attacks": 49,
+  "caught": 36,
+  "caught_by_core_rules_alone": 13,
+  "missed": [
+   "A-03",
+   "A-13",
+   "A-17",
+   "A-18",
+   "A-26",
+   "A-29",
+   "A-30",
+   "A-32",
+   "A-33",
+   "A-38",
+   "A-45",
+   "A-47",
+   "A-48"
+  ],
+  "benign_texts": {
+   "трудные фразы": 68,
+   "запросы eval": 100,
+   "письма eval": 12
+  },
+  "false_positives_ml_rules": {},
+  "false_positives_core_rules": {
+   "трудные фразы": [
+    "Automated system message: your order has been shipped.",
+    "We kindly ask you to approve this quotation by Friday.",
+    "Скидка 50% на вторую позицию при заказе от 10 шт.",
+    "Камера с ИИ: выберите разрешение."
+   ]
+  }
+ }
+}
