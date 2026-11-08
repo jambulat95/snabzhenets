@@ -8,7 +8,7 @@ import httpx
 import pytest
 from pydantic import BaseModel
 
-from app.agents.ml.gateway import (
+from app.ai.gateway import (
     Gateway,
     MemorySink,
     OpenAICompatibleProvider,
@@ -16,7 +16,7 @@ from app.agents.ml.gateway import (
     ProviderConfig,
     slots,
 )
-from app.agents.ml.gateway import gateway as gateway_module
+from app.ai.gateway import gateway as gateway_module
 
 pytestmark = pytest.mark.anyio
 

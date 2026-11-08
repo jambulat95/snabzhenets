@@ -13,13 +13,13 @@ from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
-from app.agents.contract import EMAIL_CONFIDENCE_MIN
-from app.agents.ml.email_offer import read_letter, verify
-from app.agents.ml.gateway import AgentNotSure, build_gateway_from_env, load_env
+from app.ai.contract import EMAIL_CONFIDENCE_MIN
+from app.ai.email_offer import read_letter, verify
+from app.ai.gateway import AgentNotSure, build_gateway_from_env, load_env
 
 ROOT = Path(__file__).resolve().parents[1]
-CASES = ROOT / "eval/email/cases.jsonl"
-REPORTS = ROOT / "eval/reports"
+CASES = ROOT / "data/email/cases.jsonl"
+REPORTS = ROOT / "reports"
 FIELDS = ("availability", "delivery_days", "is_analog", "unit", "pack_size")
 
 
@@ -33,15 +33,12 @@ def same(a: Any, b: Any) -> bool:
 def rules_prices(body: str, request: dict[str, Any]) -> dict[int, Decimal] | None:
     """Цены по правилам базового агента, как в шаге. Ядро (SQLAlchemy) есть только в контейнере:
     на хосте сверка с правилами пропускается."""
-    try:
-        from app.agents.baseline import parse_email_text
-    except ImportError:
-        return None
-    return {ln.request_line_no: ln.price for ln in parse_email_text(body, request).lines}
+    # В A2A здесь была сверка с разбором без модели (базовый агент ядра); в «Снабженце» его нет
+    return None
 
 
 async def main() -> None:
-    load_env(ROOT.parent / ".env")
+    load_env(ROOT.parent.parent / ".env")
     gw = build_gateway_from_env()
     records = gw.sink.records  # type: ignore[attr-defined]
     cases = [json.loads(x) for x in CASES.read_text("utf-8").splitlines() if x]

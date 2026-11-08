@@ -8,7 +8,7 @@ import httpx
 import pytest
 from pydantic import BaseModel
 
-from app.agents.ml.gateway import (
+from app.ai.gateway import (
     AgentNotSure,
     Gateway,
     MemorySink,

@@ -4,8 +4,8 @@ from typing import Any
 import httpx
 from pydantic import BaseModel
 
-from app.agents.ml import runtime
-from app.agents.ml.gateway import Gateway, OpenAICompatibleProvider, Prompt, ProviderConfig, switch
+from app.ai import runtime
+from app.ai.gateway import Gateway, OpenAICompatibleProvider, Prompt, ProviderConfig, switch
 
 PROMPT = Prompt(id="smoke", version=1, system="Ответь.")
 

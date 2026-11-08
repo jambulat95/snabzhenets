@@ -3,9 +3,9 @@ from decimal import Decimal
 
 import pytest
 
-from app.agents.ml.parse import LLMRequest, ParsedRequest, Position, Requirement, postprocess
-from app.agents.ml.parse.rfq import parse_due, structured_requirement, to_rfq
-from app.agents.ml.parse.schemas import LLMPosition
+from app.ai.parse import LLMRequest, ParsedRequest, Position, Requirement, postprocess
+from app.ai.parse.rfq import parse_due, structured_requirement, to_rfq
+from app.ai.parse.schemas import LLMPosition
 
 TODAY = date(2026, 10, 19)
 

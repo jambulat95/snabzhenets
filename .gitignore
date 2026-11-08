@@ -10,3 +10,4 @@ dist/
 storage/
 *.log
 .DS_Store
+backend/eval/reports/

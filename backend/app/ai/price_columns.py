@@ -178,7 +178,8 @@ def fits(field: str, col: Column) -> bool:
         return False
     if field in ("stock", "pack_qty"):
         # Остаток и кратность импорт разбирает и из текста: «>100», «под заказ», «100 шт»
-        from ...catalog.router import _pack, _stock
+        from .stock_text import parse_pack as _pack
+        from .stock_text import parse_stock as _stock
 
         parse = _stock if field == "stock" else _pack
         # Доля «разбирается» не пропустит колонку, где из десяти остатков один отрицательный:

@@ -3,7 +3,7 @@ from typing import Any
 
 import pytest
 
-from app.agents.ml.email_offer import (
+from app.ai.email_offer import (
     LLMEmailLine,
     LLMEmailOffer,
     days,

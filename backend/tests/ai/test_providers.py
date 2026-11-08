@@ -5,7 +5,7 @@ import httpx
 import pytest
 from pydantic import BaseModel
 
-from app.agents.ml.gateway import (
+from app.ai.gateway import (
     GigaChatProvider,
     OpenAICompatibleProvider,
     ProviderConfig,
@@ -13,7 +13,7 @@ from app.agents.ml.gateway import (
     make_provider,
     providers_from_env,
 )
-from app.agents.ml.gateway.providers import GIGACHAT_OAUTH_URL, inline_refs
+from app.ai.gateway.providers import GIGACHAT_OAUTH_URL, inline_refs
 
 pytestmark = pytest.mark.anyio
 
@@ -270,7 +270,7 @@ def test_core_env_names_work(clean_env: pytest.MonkeyPatch) -> None:
 
 
 def test_cloud_reserve_gets_longer_connect_timeout() -> None:
-    from app.agents.ml.gateway.providers import (
+    from app.ai.gateway.providers import (
         CLOUD_CONNECT_TIMEOUT_S,
         CONNECT_TIMEOUT_S,
         _timeout,

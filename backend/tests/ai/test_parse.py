@@ -4,11 +4,11 @@ from typing import Any
 
 import pytest
 
-from app.agents.ml.gateway import Gateway, ProviderConfig
-from app.agents.ml.gateway.providers import Completion
-from app.agents.ml.parse import LLMRequest, normalize_unit, parse_request, postprocess
-from app.agents.ml.parse.parser import chunk_ranges
-from app.agents.ml.parse.text import contains, parse_quantity, standalone_numbers
+from app.ai.gateway import Gateway, ProviderConfig
+from app.ai.gateway.providers import Completion
+from app.ai.parse import LLMRequest, normalize_unit, parse_request, postprocess
+from app.ai.parse.parser import chunk_ranges
+from app.ai.parse.text import contains, parse_quantity, standalone_numbers
 
 TEXT = """Добрый день! Прошу КП:
 1. Подшипник 6204-2RS — 10 шт
@@ -200,7 +200,7 @@ def test_unit_normalized_by_model_is_accepted_if_present_in_line() -> None:
      ("Провод 1*2,5 — 10 см", {"см"}), ("гайка 30шт", {"шт"})],
 )  # fmt: skip
 def test_units_in(line: str, units: set[str]) -> None:
-    from app.agents.ml.parse.units import units_in
+    from app.ai.parse.units import units_in
 
     assert units_in(line) == units
 
@@ -240,14 +240,14 @@ def test_code_taken_as_quantity_goes_to_review() -> None:
     ],
 )  # fmt: skip
 def test_restore_codes(name: str, source: str, qty: str, expected: str) -> None:
-    from app.agents.ml.parse.parser import restore_codes
+    from app.ai.parse.parser import restore_codes
 
     assert restore_codes(name, source, qty) == expected
 
 
 def test_signature_without_quantity_is_not_a_position() -> None:
-    from app.agents.ml.parse.parser import postprocess
-    from app.agents.ml.parse.schemas import LLMPosition, LLMRequest
+    from app.ai.parse.parser import postprocess
+    from app.ai.parse.schemas import LLMPosition, LLMRequest
 
     text = "1. Подшипник 6204-2RS — 20 шт\nС уважением, Иванов Пётр, +7 900 123-45-67"
     raw = LLMRequest(

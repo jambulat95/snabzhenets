@@ -11,15 +11,15 @@ from dataclasses import asdict
 from datetime import datetime
 from pathlib import Path
 
-from app.agents.contract import TOKEN_BUDGET, Kind
-from app.agents.ml.gateway import AgentNotSure, build_gateway_from_env, load_env
-from app.agents.ml.parse import parse_request
-from app.agents.ml.parse.parser import split_lines
+from app.ai.contract import TOKEN_BUDGET, Kind
+from app.ai.gateway import AgentNotSure, build_gateway_from_env, load_env
+from app.ai.parse import parse_request
+from app.ai.parse.parser import split_lines
 from ml_eval import CaseResult, score_case, summarize
 
 ROOT = Path(__file__).resolve().parents[1]
-CASES = ROOT / "eval/parse/cases.jsonl"
-REPORTS = ROOT / "eval/reports"
+CASES = ROOT / "data/parse/cases.jsonl"
+REPORTS = ROOT / "reports"
 THRESHOLD = 0.90
 
 
@@ -27,7 +27,7 @@ async def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int)
     args = ap.parse_args()
-    load_env(ROOT.parent / ".env")
+    load_env(ROOT.parent.parent / ".env")
     gw = build_gateway_from_env()
     cases = [json.loads(x) for x in CASES.read_text(encoding="utf-8").splitlines() if x]
     cases = cases[: args.limit] if args.limit else cases

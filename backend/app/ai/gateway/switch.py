@@ -19,7 +19,7 @@ log = logging.getLogger(__name__)
 
 
 def _redis() -> Any:
-    from ....redis_client import redis_client  # настройки ядра — только когда переключатель нужен
+    from ...redis_client import redis_client  # настройки ядра — только когда переключатель нужен
 
     return redis_client
 

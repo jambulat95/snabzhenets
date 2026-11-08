@@ -1,6 +1,6 @@
 import pytest
 
-from app.agents.ml.gateway.pii import anonymize
+from app.ai.gateway.pii import anonymize
 
 
 @pytest.mark.parametrize(
