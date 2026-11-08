@@ -12,7 +12,7 @@ from sqlalchemy.orm import Session
 from .. import journal
 from ..auth.deps import get_current_user
 from ..db import get_db
-from ..models import JournalEntry, Procurement, SpecItem, User
+from ..models import JournalEntry, PriceQuote, Procurement, SpecItem, User
 from ..pipeline import TITLES, Status, TransitionError, transition
 from ..queue import enqueue
 from . import ktru
@@ -69,6 +69,26 @@ class JournalOut(BaseModel):
     hash: str
 
 
+class QuoteOut(BaseModel):
+    id: int
+    spec_item_id: int
+    channel: str
+    source_name: str
+    region: str | None
+    offer_name: str | None
+    unit_price: Decimal
+    vat_mode: str
+    price_kind: str | None
+    url: str | None
+    captured_at: datetime
+    extracted_by: str
+    html_sha256: str | None
+    screenshot_sha256: str | None
+    match: dict[str, Any]
+    status: str
+    notes: list[str]
+
+
 class ProcurementOut(BaseModel):
     id: int
     number: str | None
@@ -80,6 +100,7 @@ class ProcurementOut(BaseModel):
     created_at: datetime
     parse_meta: dict[str, Any]
     items: list[ItemOut] = []
+    quotes: list[QuoteOut] = []
     journal: list[JournalOut] = []
 
 
@@ -90,6 +111,8 @@ def to_out(p: Procurement, db: Session | None = None) -> ProcurementOut:
     )
     if db is not None:
         out.items = [ItemOut.model_validate(i, from_attributes=True) for i in p.items]
+        quotes = db.scalars(select(PriceQuote).where(PriceQuote.procurement_id == p.id).order_by(PriceQuote.id))
+        out.quotes = [QuoteOut.model_validate(q, from_attributes=True) for q in quotes]
         rows = db.scalars(select(JournalEntry).where(JournalEntry.procurement_id == p.id).order_by(JournalEntry.seq))
         out.journal = [JournalOut.model_validate(r, from_attributes=True) for r in rows]
     return out
@@ -226,7 +249,9 @@ def blockers(p: Procurement) -> list[str]:
 
 
 @router.post("/procurements/{pid}/confirm-spec", response_model=ProcurementOut)
-def confirm_spec(pid: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)) -> ProcurementOut:
+async def confirm_spec(
+    pid: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)
+) -> ProcurementOut:
     """✋ Первая точка утверждения: человек подтверждает спецификацию, агент идёт искать поставщиков."""
     p = get_own(db, pid, user)
     problems = blockers(p)
@@ -238,6 +263,7 @@ def confirm_spec(pid: int, user: User = Depends(get_current_user), db: Session =
     except TransitionError as e:
         raise err(409, "bad_transition", str(e)) from e
     db.commit()
+    await enqueue("collect_site_prices", p.id)
     return to_out(p, db)
 
 

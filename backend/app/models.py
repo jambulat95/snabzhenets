@@ -135,3 +135,31 @@ class JournalEntry(Base):
     details: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     prev_hash: Mapped[str] = mapped_column(String(64))
     hash: Mapped[str] = mapped_column(String(64))
+
+
+class PriceQuote(Base):
+    """Цена по позиции из одного источника (сайт, письмо, контракт ЕИС) — с доказательством."""
+
+    __tablename__ = "price_quotes"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    procurement_id: Mapped[int] = mapped_column(ForeignKey("procurements.id", ondelete="CASCADE"), index=True)
+    spec_item_id: Mapped[int] = mapped_column(ForeignKey("spec_items.id", ondelete="CASCADE"), index=True)
+    channel: Mapped[str] = mapped_column(String(20))  # site / email / eis_contract
+    source_name: Mapped[str] = mapped_column(String(200))  # магазин или поставщик
+    source_key: Mapped[str | None] = mapped_column(String(50))
+    region: Mapped[str | None] = mapped_column(String(100))
+    offer_name: Mapped[str | None] = mapped_column(String(500))  # как товар назван в источнике
+    unit_price: Mapped[Decimal] = mapped_column(Numeric(14, 2))
+    currency: Mapped[str] = mapped_column(String(3), default="RUB")
+    vat_mode: Mapped[str] = mapped_column(String(20))  # with / without / unknown
+    price_kind: Mapped[str | None] = mapped_column(String(30))  # розничная / для юрлиц
+    url: Mapped[str | None] = mapped_column(Text)
+    captured_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))  # когда цена зафиксирована
+    extracted_by: Mapped[str] = mapped_column(String(30))  # json-ld / microdata / letter …
+    html_sha256: Mapped[str | None] = mapped_column(String(64))
+    screenshot_sha256: Mapped[str | None] = mapped_column(String(64))
+    # Сверка «тот ли товар» (модель) и итог: ok — в расчёт, rejected — нет, review — решает человек
+    match: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    status: Mapped[str] = mapped_column(String(20))
+    notes: Mapped[list[str]] = mapped_column(JSON, default=list)
