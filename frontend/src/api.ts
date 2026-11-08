@@ -155,6 +155,40 @@ export interface EvidenceCheck {
   kind: string;
 }
 
+export interface CandidateRow {
+  id: number;
+  supplier_id: number;
+  name: string;
+  region: string | null;
+  city: string | null;
+  email: string | null;
+  is_demo: boolean;
+  source: "eis" | "demo";
+  contracts_44fz_3y: number;
+  item_ids: number[];
+  checks: { code: string; verdict: "allow" | "warn" | "human" | "deny"; reason: string }[];
+  verdict: "allow" | "warn" | "human" | "deny";
+  selected: boolean;
+  rank: number;
+  reason: string | null;
+  request_status: "none" | "queued" | "sent" | "reminded" | "replied";
+}
+
+export interface MessageRow {
+  id: string;
+  direction: "out" | "in";
+  candidate_id: number | null;
+  kind: string;
+  address: string;
+  subject: string;
+  body: string;
+  at: string | null;
+  status: string;
+  attachments: { filename: string | null; content_type: string; sha256: string; size: number }[];
+  suspicious: string[];
+  evidence_sha256: string | null;
+}
+
 export interface Procurement {
   id: number;
   number: string | null;
@@ -171,5 +205,9 @@ export interface Procurement {
   };
   items: SpecItem[];
   quotes: Quote[];
+  candidates: CandidateRow[];
+  messages: MessageRow[];
   journal: JournalRow[];
+  time_shift_hours: number;
+  demo_mode: boolean;
 }

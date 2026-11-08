@@ -38,6 +38,14 @@ export const ACTION_TITLES: Record<string, string> = {
   site_mismatch: "Товар на сайте не подходит",
   site_no_price: "На странице нет цены в разметке",
   site_prices_done: "Сбор цен с сайтов завершён",
+  eis_searched: "Поиск по реестру контрактов ЕИС",
+  supplier_excluded: "Поставщик исключён",
+  suppliers_selected: "Поставщики выбраны",
+  mail_request: "Отправлен запрос цен",
+  mail_reminder: "Отправлено напоминание",
+  mail_answer: "Отправлен ответ поставщику",
+  mail_received: "Получено письмо",
+  time_accelerated: "Демо: ускорено время",
 };
 
 export const ACTOR_TITLES = { human: "Человек", agent: "Агент", system: "Система" } as const;

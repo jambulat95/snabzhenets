@@ -25,6 +25,8 @@ import { useAuth } from "../auth";
 import AgentProgress from "../components/AgentProgress";
 import ConfirmAction from "../components/ConfirmAction";
 import PricesCard from "../components/PricesCard";
+import SuppliersCard from "../components/SuppliersCard";
+import MailCard from "../components/MailCard";
 import StatusTag from "../components/StatusTag";
 import { ACTION_TITLES, ACTOR_TITLES, STAGES, STATUS_TONE } from "../labels";
 
@@ -77,7 +79,20 @@ export default function ProcurementPage() {
             {p.title}
           </Typography.Title>
         </div>
-        <StatusTag tone={STATUS_TONE[p.status]}>{p.status_title}</StatusTag>
+        <Space>
+          {p.demo_mode && p.status === "collecting" && (
+            <Tooltip title="Демо: сдвинуть часы заявки на сутки — сработают напоминания и сроки">
+              <Button
+                onClick={() =>
+                  run(() => api<Procurement>(`/procurements/${p.id}/accelerate`, { body: { hours: 24 } }), "Прошли сутки (демо)")
+                }
+              >
+                Ускорить время +24 ч{p.time_shift_hours ? ` (уже +${p.time_shift_hours} ч)` : ""}
+              </Button>
+            </Tooltip>
+          )}
+          <StatusTag tone={STATUS_TONE[p.status]}>{p.status_title}</StatusTag>
+        </Space>
       </div>
 
       <Card size="small">
@@ -289,7 +304,13 @@ export default function ProcurementPage() {
         </Card>
       )}
 
-      {!["draft", "spec_review", "needs_human", "cancelled"].includes(p.status) && <PricesCard p={p} />}
+      {!["draft", "spec_review", "needs_human", "cancelled"].includes(p.status) && (
+        <>
+          <SuppliersCard p={p} />
+          <PricesCard p={p} />
+          <MailCard p={p} />
+        </>
+      )}
 
       <Collapse
         items={[
