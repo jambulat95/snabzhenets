@@ -31,6 +31,19 @@ def gaps(quantity: Any, unit: str | None, problems: list[str]) -> list[str]:
     return q
 
 
+def auto_title(text: str) -> str:
+    """Заголовок, который API ставит до разбора (spec/router.title_from)."""
+    first = next((ln.strip(" -•\t") for ln in text.splitlines() if ln.strip()), "Заявка")
+    return first[:80] + ("…" if len(first) > 80 else "")
+
+
+def summary_title(names: list[str]) -> str:
+    """После разбора — заголовок по позициям: «Картриджи для HP, Проектор для аудитории, Бумага А4 80»."""
+    parts = [" ".join(n.split()[:3]).rstrip(",.") for n in names[:3]]
+    title = ", ".join(parts) + (f" и ещё {len(names) - 3}" if len(names) > 3 else "")
+    return title[:120]
+
+
 def build_items(parsed: ParsedRequest) -> list[dict[str, Any]]:
     return [
         {
@@ -82,6 +95,8 @@ async def run_parse(procurement_id: int) -> None:
         db.execute(delete(SpecItem).where(SpecItem.procurement_id == proc.id))
         for it in items:
             db.add(SpecItem(procurement_id=proc.id, **it))
+        if proc.title == auto_title(proc.source_text) and items:
+            proc.title = summary_title([it["name"] for it in items])
         proc.parse_meta = {
             "kind": parsed.kind, "deadline_raw": parsed.deadline_raw,
             "requirements": [r.model_dump() for r in parsed.requirements],

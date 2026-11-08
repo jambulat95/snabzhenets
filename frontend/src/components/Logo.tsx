@@ -1,25 +1,22 @@
-// Логотип площадки — свой (ТЗ, раздел 10): знак «два агента обмениваются» + название.
-// Название и подпись — константы, дизайнер меняет их здесь.
+// Логотип «Снабженца»: знак «список закупки с отметкой» + название. Каркас — из A2A Маркет.
 import { Link } from "react-router-dom";
 
-export const BRAND_NAME = "A2A Маркет";
-export const BRAND_TAGLINE = "агентный маркетплейс закупок";
+export const BRAND_NAME = "Снабженец";
+export const BRAND_TAGLINE = "ИИ-агент снабженца";
 
 export function LogoMark({ size = 36 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 36 36" aria-hidden="true" style={{ flex: "none" }}>
       <defs>
-        <linearGradient id="a2a-logo-g" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id="snab-logo-g" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#2A852A" />
           <stop offset="1" stopColor="#00775A" />
         </linearGradient>
       </defs>
-      <rect width="36" height="36" rx="8" fill="url(#a2a-logo-g)" />
-      {/* Две встречные стрелки: агент покупателя ⇄ агент поставщика */}
-      <path d="M9 14h15l-4-4" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M27 22H12l4 4" fill="none" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="27" cy="14" r="2.4" fill="#50D04D" />
-      <circle cx="9" cy="22" r="2.4" fill="#50D04D" />
+      <rect width="36" height="36" rx="8" fill="url(#snab-logo-g)" />
+      {/* Лист заявки: строки и отметка «проверено» */}
+      <path d="M11 11h10M11 16h14M11 21h7" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M20 24l3 3 6-7" fill="none" stroke="#50D04D" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

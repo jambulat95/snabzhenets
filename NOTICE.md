@@ -14,5 +14,7 @@
 | `backend/app/inn.py` | `backend/app/inn.py` |
 | `backend/tests/ai/` | `backend/tests/ml/` (часть) |
 | `backend/eval/` | `ml/src/ml_eval/`, `ml/scripts/eval_*.py`, `ml/eval/{parse,email,attacks}/` |
+| `frontend/` (каркас: конфиги, тема, раскладка, API-клиент, авторизация, часть компонентов) | `frontend/` |
+| `backend/app/auth/`, `security.py`, `journal.py` (адаптирован), миграция `0002` | `backend/app/auth/`, `security.py`, `journal/service.py`, миграция триггера журнала |
 
 Перенос сделан отдельными коммитами «перенос из A2A Маркет: …» без правок; все изменения — в следующих коммитах.

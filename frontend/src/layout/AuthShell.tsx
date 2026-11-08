@@ -41,7 +41,7 @@ export default function AuthShell({ children, aside }: { children: ReactNode; as
         }}
       >
         <span>© 2026 {BRAND_NAME}</span>
-        <span>Прототип для RLT.Startup. Компании и данные вымышленные</span>
+        <span>Прототип. Демо-режим: письма уходят только в почтовую песочницу</span>
       </footer>
     </div>
   );
