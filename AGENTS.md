@@ -19,7 +19,10 @@ cd backend && uv run pytest -q            # тесты
 cd backend && uv run ruff check app tests # линтер
 cd backend && uv run mypy                 # типы (strict для app/ai)
 docker compose up -d --build              # база, Redis, почтовая песочница, API, воркер
+curl localhost:8010/api/health            # проверка
 ```
+
+Порты на хосте (не пересекаются с A2A Маркет): API 8010, PostgreSQL 5433, Redis 6380, SMTP 3025, IMAP 3143.
 
 ## 1. Продуктовые правила (не обсуждаются)
 

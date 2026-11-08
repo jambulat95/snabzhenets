@@ -1,0 +1,70 @@
+# «Снабженец»: docker compose up -d --build
+# Демо работает офлайн: внешние источники — записанные данные (data/replay), почта — GreenMail.
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: snab
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-snab}
+      POSTGRES_DB: snabzhenets
+    ports: ["127.0.0.1:5433:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U snab -d snabzhenets"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports: ["127.0.0.1:6380:6379"]
+
+  # Почтовая песочница: настоящие SMTP (3025) и IMAP (3143), ящики создаются при первом письме.
+  # Письма реальным адресам в демо запрещены в коде (MailPort), GreenMail — второй рубеж: наружу он не шлёт
+  greenmail:
+    image: greenmail/standalone:2.0.1
+    restart: unless-stopped
+    environment:
+      GREENMAIL_OPTS: >-
+        -Dgreenmail.setup.test.smtp -Dgreenmail.setup.test.imap -Dgreenmail.hostname=0.0.0.0
+        -Dgreenmail.auth.disabled -Dgreenmail.verbose
+    ports: ["127.0.0.1:3025:3025", "127.0.0.1:3143:3143"]
+
+  api:
+    build: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://snab:${POSTGRES_PASSWORD:-snab}@db:5432/snabzhenets
+      REDIS_URL: redis://redis:6379/0
+      SMTP_HOST: greenmail
+      IMAP_HOST: greenmail
+      REPLAY_DIR: /data/replay
+    depends_on:
+      db: {condition: service_healthy}
+      redis: {condition: service_started}
+    ports: ["127.0.0.1:8010:8000"]
+    volumes: ["./backend:/app", "./data:/data", "storage:/app/storage"]
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    restart: unless-stopped
+
+  worker:
+    build: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://snab:${POSTGRES_PASSWORD:-snab}@db:5432/snabzhenets
+      REDIS_URL: redis://redis:6379/0
+      SMTP_HOST: greenmail
+      IMAP_HOST: greenmail
+      REPLAY_DIR: /data/replay
+    depends_on:
+      db: {condition: service_healthy}
+      redis: {condition: service_started}
+    volumes: ["./backend:/app", "./data:/data", "storage:/app/storage"]
+    command: arq app.worker.WorkerSettings
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  storage:
