@@ -11,7 +11,13 @@
   "file": "shops/regard/cartridge.html",
   "markup_price": "13250.00",
   "markup": "json-ld",
-  "blocked": false
+  "blocked": false,
+  "screenshot": {
+   "file": "shops/regard/cartridge.jpg",
+   "sha256": "1a4aaf360441c1ff5bb204733295da98dd3720c76485ebb84a2fbce3865a8629",
+   "taken_at": "2026-11-08T20:03:05+00:00",
+   "bytes": 172645
+  }
  },
  {
   "shop": "regard",
@@ -25,7 +31,13 @@
   "file": "shops/regard/projector.html",
   "markup_price": "33670.00",
   "markup": "json-ld",
-  "blocked": false
+  "blocked": false,
+  "screenshot": {
+   "file": "shops/regard/projector.jpg",
+   "sha256": "5866268d4537cc2484a07c2acfe11d5aae61bedbad7f04750ba422d1756c059e",
+   "taken_at": "2026-11-08T20:03:13+00:00",
+   "bytes": 180872
+  }
  },
  {
   "shop": "regard",
@@ -39,7 +51,13 @@
   "file": "shops/regard/paper.html",
   "markup_price": "550.00",
   "markup": "json-ld",
-  "blocked": false
+  "blocked": false,
+  "screenshot": {
+   "file": "shops/regard/paper.jpg",
+   "sha256": "2cdacfc62d2011fe1297410f7cbb4d368c01a2507409b8b8c3882c9c38ac3b90",
+   "taken_at": "2026-11-08T20:03:21+00:00",
+   "bytes": 197279
+  }
  },
  {
   "shop": "regard",
@@ -67,7 +85,13 @@
   "file": "shops/nix/cartridge.html",
   "markup_price": "13532",
   "markup": "microdata",
-  "blocked": false
+  "blocked": false,
+  "screenshot": {
+   "file": "shops/nix/cartridge.jpg",
+   "sha256": "7cc9aab8178d715f4c058e5a232389fe9143baedc1b9c3e567e7c1d2e532e3ab",
+   "taken_at": "2026-11-08T20:03:28+00:00",
+   "bytes": 407928
+  }
  },
  {
   "shop": "nix",
@@ -81,7 +105,13 @@
   "file": "shops/nix/projector.html",
   "markup_price": "28254",
   "markup": "microdata",
-  "blocked": false
+  "blocked": false,
+  "screenshot": {
+   "file": "shops/nix/projector.jpg",
+   "sha256": "fe319b5dd6e6058119f15336c816fc07c2b85fc54fcc0fe9ac565ffdd46e17ee",
+   "taken_at": "2026-11-08T20:03:34+00:00",
+   "bytes": 235639
+  }
  },
  {
   "shop": "nix",
@@ -95,7 +125,13 @@
   "file": "shops/nix/paper.html",
   "markup_price": "450",
   "markup": "microdata",
-  "blocked": false
+  "blocked": false,
+  "screenshot": {
+   "file": "shops/nix/paper.jpg",
+   "sha256": "c8546d9e6c71629fcdbc00216dbabba62f34177fc9fad9d7439b21b5af5fc274",
+   "taken_at": "2026-11-08T20:03:40+00:00",
+   "bytes": 306343
+  }
  },
  {
   "shop": "nix",
@@ -123,7 +159,13 @@
   "file": "shops/nix_makhachkala/cartridge.html",
   "markup_price": "12369",
   "markup": "microdata",
-  "blocked": false
+  "blocked": false,
+  "screenshot": {
+   "file": "shops/nix_makhachkala/cartridge.jpg",
+   "sha256": "509eaede27f4c01a5990db45a570ad5cf374c0123930cb47c5b52680f7a2076b",
+   "taken_at": "2026-11-08T20:03:46+00:00",
+   "bytes": 333666
+  }
  },
  {
   "shop": "nix_makhachkala",
@@ -137,7 +179,13 @@
   "file": "shops/nix_makhachkala/projector.html",
   "markup_price": "33744",
   "markup": "microdata",
-  "blocked": false
+  "blocked": false,
+  "screenshot": {
+   "file": "shops/nix_makhachkala/projector.jpg",
+   "sha256": "cd9c66a09d3175b96e3ab172f59e8abecc6b7aa4052c3b5d810ffe8af6e2dccd",
+   "taken_at": "2026-11-08T20:03:52+00:00",
+   "bytes": 236990
+  }
  },
  {
   "shop": "nix_makhachkala",
@@ -151,6 +199,12 @@
   "file": "shops/nix_makhachkala/paper.html",
   "markup_price": "496",
   "markup": "microdata",
-  "blocked": false
+  "blocked": false,
+  "screenshot": {
+   "file": "shops/nix_makhachkala/paper.jpg",
+   "sha256": "5d36c67b36069084cd746d5c7b10785f55996c5e863b9eb7193cbb5d8e29a0af",
+   "taken_at": "2026-11-08T20:03:58+00:00",
+   "bytes": 240837
+  }
  }
 ]

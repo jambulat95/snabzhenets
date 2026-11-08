@@ -1,0 +1,6 @@
+{
+  "_note": "Магазины для офлайн-демо (docs/SOURCES.md). ИНН не указаны: в записанных страницах их нет, выдумывать нельзя.",
+  "regard": {"name": "Регард", "site": "regard.ru", "region": "Москва", "price_kind": "розничная"},
+  "nix": {"name": "НИКС", "site": "nix.ru", "region": "Москва", "price_kind": "розничная"},
+  "nix_makhachkala": {"name": "НИКС (филиал)", "site": "max.nix.ru", "region": "Махачкала", "price_kind": "розничная"}
+}

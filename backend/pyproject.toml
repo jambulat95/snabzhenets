@@ -28,7 +28,9 @@ dependencies = [
 # Эмбеддинги bge-m3 (torch, тяжело): нужны для подбора КТРУ; без них работает HashingEmbedder
 embeddings = ["sentence-transformers>=3"]
 # Снимки страниц магазинов (доказательный пакет); браузер ставится `playwright install chromium`
-browser = ["playwright>=1.47"]
+browser = [
+    "playwright>=1.47",
+]
 
 [dependency-groups]
 dev = [
