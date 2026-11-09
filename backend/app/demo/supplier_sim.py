@@ -96,7 +96,8 @@ def excel(sup: dict[str, Any], lines: list[dict[str, Any]], base: dict[str, Deci
     assert ws is not None
     ws.title = "КП"
     ws.append([f"Коммерческое предложение {sup['name']}"])
-    ws.append(["№", "Наименование", "Ед. изм.", "Кол-во", "Цена с НДС, руб.", "Сумма с НДС, руб."])
+    ws.append(["Цены указаны в рублях с НДС 22 %"])
+    ws.append(["№", "Наименование", "Ед. изм.", "Кол-во", "Цена", "Сумма"])
     for ln in lines:
         p = price(sup, ln["okpd2"], base)
         if p is not None:

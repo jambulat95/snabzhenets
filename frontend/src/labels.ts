@@ -46,6 +46,11 @@ export const ACTION_TITLES: Record<string, string> = {
   mail_answer: "Отправлен ответ поставщику",
   mail_received: "Получено письмо",
   time_accelerated: "Демо: ускорено время",
+  price_from_letter: "Цена из письма",
+  question_answered: "Агент ответил на вопрос поставщика",
+  question_to_human: "Вопрос поставщика — человеку",
+  analysis_done: "Расчёт по методике",
+  quote_decision: "Решение человека по цене",
 };
 
 export const ACTOR_TITLES = { human: "Человек", agent: "Агент", system: "Система" } as const;

@@ -9,7 +9,7 @@ import { api, type EvidenceCheck, type Quote } from "../api";
 export default function EvidenceButton({ quote }: { quote: Quote }) {
   const [open, setOpen] = useState(false);
   const [check, setCheck] = useState<EvidenceCheck | null>(null);
-  const sha = quote.screenshot_sha256 ?? quote.html_sha256;
+  const sha = quote.screenshot_sha256 ?? quote.html_sha256 ?? quote.source_sha256;
   if (!sha) return null;
 
   const show = () => {
@@ -50,8 +50,22 @@ export default function EvidenceButton({ quote }: { quote: Quote }) {
           </Descriptions.Item>
           <Descriptions.Item label="Товар на странице">{quote.offer_name}</Descriptions.Item>
           <Descriptions.Item label="Цена записана">{dayjs(quote.captured_at).format("DD.MM.YYYY HH:mm")}</Descriptions.Item>
-          <Descriptions.Item label="Цена взята из">разметки страницы ({quote.extracted_by}), кодом — не моделью</Descriptions.Item>
-          <Descriptions.Item label="SHA-256 снимка">
+          <Descriptions.Item label="Цена взята из">
+            {quote.channel === "site"
+              ? `разметки страницы (${quote.extracted_by}), кодом — не моделью`
+              : `${quote.extracted_by === "excel" ? "Excel-вложения" : "текста письма"}: модель нашла строку, код сверил число с письмом`}
+          </Descriptions.Item>
+          {quote.source_sha256 && (
+            <Descriptions.Item label="SHA-256 письма">
+              <Typography.Text code copyable>
+                {quote.source_sha256}
+              </Typography.Text>{" "}
+              <a href={`/api/evidence/${quote.source_sha256}/file`} target="_blank" rel="noreferrer">
+                открыть исходное письмо
+              </a>
+            </Descriptions.Item>
+          )}
+          {quote.channel === "site" && (<><Descriptions.Item label="SHA-256 снимка">
             <Typography.Text code copyable>
               {quote.screenshot_sha256 ?? "—"}
             </Typography.Text>
@@ -65,7 +79,7 @@ export default function EvidenceButton({ quote }: { quote: Quote }) {
                 открыть исходный HTML
               </a>
             )}
-          </Descriptions.Item>
+          </Descriptions.Item></>)}
         </Descriptions>
         {quote.screenshot_sha256 && (
           <div style={{ maxHeight: 520, overflow: "auto", border: "1px solid var(--c-border)", borderRadius: 8 }}>

@@ -20,6 +20,7 @@ cd backend && uv run ruff check app tests # линтер
 cd backend && uv run mypy                 # типы (strict для app/ai)
 docker compose up -d --build              # база, Redis, почтовая песочница, API, воркер
 curl localhost:8010/api/health            # проверка
+cd backend && uv run python -m app.seed --reset && uv run python -u scripts/check_scenario.py  # сквозной демо-сценарий
 ```
 
 Порты на хосте (не пересекаются с A2A Маркет): API 8010, PostgreSQL 5433, Redis 6380, SMTP 3025, IMAP 3143.

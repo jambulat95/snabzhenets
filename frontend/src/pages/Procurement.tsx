@@ -27,6 +27,7 @@ import ConfirmAction from "../components/ConfirmAction";
 import PricesCard from "../components/PricesCard";
 import SuppliersCard from "../components/SuppliersCard";
 import MailCard from "../components/MailCard";
+import AnalysisCard from "../components/AnalysisCard";
 import StatusTag from "../components/StatusTag";
 import { ACTION_TITLES, ACTOR_TITLES, STAGES, STATUS_TONE } from "../labels";
 
@@ -306,8 +307,9 @@ export default function ProcurementPage() {
 
       {!["draft", "spec_review", "needs_human", "cancelled"].includes(p.status) && (
         <>
+          <AnalysisCard p={p} run={run} />
+          <PricesCard p={p} run={run} />
           <SuppliersCard p={p} />
-          <PricesCard p={p} />
           <MailCard p={p} />
         </>
       )}

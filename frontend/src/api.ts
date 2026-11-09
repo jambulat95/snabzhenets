@@ -142,6 +142,40 @@ export interface Quote {
   match: { matches?: boolean; confidence?: string; differences?: string[]; reason?: string };
   status: "ok" | "rejected" | "review";
   notes: string[];
+  source_sha256: string | null;
+  candidate_id: number | null;
+  human_decision: "include" | "exclude" | null;
+  human_reason: string | null;
+}
+
+export interface RuleVerdict {
+  code: string;
+  verdict: "allow" | "warn" | "human" | "deny";
+  reason: string;
+}
+
+export interface Analysis {
+  profile?: string;
+  method?: string;
+  source?: string;
+  computed_at?: string;
+  ready?: boolean;
+  total_nmck?: string | null;
+  general?: RuleVerdict[];
+  items?: {
+    item_id: number;
+    line_no: number;
+    name: string;
+    quantity: string;
+    admitted: number;
+    quotes: number;
+    mean: string | null;
+    cv_pct: string | null;
+    nmck: string | null;
+    ok: boolean;
+    verdicts: RuleVerdict[];
+  }[];
+  quotes?: Record<string, { admitted: boolean; verdicts: RuleVerdict[] }>;
 }
 
 export interface EvidenceCheck {
@@ -210,4 +244,5 @@ export interface Procurement {
   journal: JournalRow[];
   time_shift_hours: number;
   demo_mode: boolean;
+  analysis: Analysis;
 }

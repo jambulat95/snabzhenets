@@ -10,6 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .. import journal
+from ..analysis import run_analysis
 from ..auth.deps import get_current_user
 from ..config import settings
 from ..db import get_db
@@ -97,6 +98,10 @@ class QuoteOut(BaseModel):
     match: dict[str, Any]
     status: str
     notes: list[str]
+    source_sha256: str | None = None
+    candidate_id: int | None = None
+    human_decision: str | None = None
+    human_reason: str | None = None
 
 
 class CandidateOut(BaseModel):
@@ -150,13 +155,14 @@ class ProcurementOut(BaseModel):
     journal: list[JournalOut] = []
     time_shift_hours: int = 0
     demo_mode: bool = True
+    analysis: dict[str, Any] = {}
 
 
 def to_out(p: Procurement, db: Session | None = None) -> ProcurementOut:
     out = ProcurementOut(
         id=p.id, number=p.number, title=p.title, status=p.status, status_title=TITLES[Status(p.status)],
         hold_reason=p.hold_reason, source_text=p.source_text, created_at=p.created_at, parse_meta=p.parse_meta or {},
-        time_shift_hours=p.time_shift_hours or 0, demo_mode=settings.demo_mode,
+        time_shift_hours=p.time_shift_hours or 0, demo_mode=settings.demo_mode, analysis=p.analysis or {},
     )
     if db is not None:
         out.items = [ItemOut.model_validate(i, from_attributes=True) for i in p.items]
@@ -367,4 +373,69 @@ async def accelerate(pid: int, data: AccelerateIn, user: User = Depends(get_curr
                    actor_user_id=user.id, details={"hours": data.hours, "total_shift_h": p.time_shift_hours})
     db.commit()
     await enqueue("mail_tick")
+    return to_out(p, db)
+
+
+class DecisionIn(BaseModel):
+    decision: str = Field(pattern="^(include|exclude|clear)$")
+    reason: str = Field(min_length=3, max_length=500)
+
+
+@router.post("/procurements/{pid}/quotes/{qid}/decision", response_model=ProcurementOut)
+def quote_decision(pid: int, qid: int, data: DecisionIn, user: User = Depends(get_current_user),
+                   db: Session = Depends(get_db)) -> ProcurementOut:
+    """Человек допускает или исключает цену с причиной; методика пересчитывается сразу."""
+    p = get_own(db, pid, user)
+    if p.status not in (Status.COLLECTING, Status.ANALYSIS):
+        raise err(409, "not_editable", "Решения по ценам принимаются на шагах сбора и проверки по методике.")
+    q = db.get(PriceQuote, qid)
+    if q is None or q.procurement_id != p.id:
+        raise err(404, "not_found", "Цена не найдена.")
+    q.human_decision = None if data.decision == "clear" else data.decision
+    q.human_reason = None if data.decision == "clear" else data.reason
+    journal.record(db, org_id=p.org_id, procurement_id=p.id, action="quote_decision", actor_kind="human",
+                   actor_user_id=user.id, decision=data.decision,
+                   details={"quote_id": q.id, "source": q.source_name, "price": str(q.unit_price),
+                            "reason": data.reason})
+    if p.status == Status.ANALYSIS:
+        run_analysis(db, p)
+    db.commit()
+    return to_out(p, db)
+
+
+@router.post("/procurements/{pid}/finish-collecting", response_model=ProcurementOut)
+def finish_collecting(
+    pid: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)
+) -> ProcurementOut:
+    """Человек завершает сбор досрочно — агент считает по тем ценам, что есть."""
+    p = get_own(db, pid, user)
+    if p.status != Status.COLLECTING:
+        raise err(409, "bad_state", "Сбор цен уже завершён.")
+    run_analysis(db, p, actor=user)
+    db.commit()
+    return to_out(p, db)
+
+
+@router.post("/procurements/{pid}/reanalyse", response_model=ProcurementOut)
+def reanalyse(pid: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)) -> ProcurementOut:
+    p = get_own(db, pid, user)
+    if p.status != Status.ANALYSIS:
+        raise err(409, "bad_state", "Пересчёт доступен на шаге проверки по методике.")
+    run_analysis(db, p)
+    db.commit()
+    return to_out(p, db)
+
+
+@router.post("/procurements/{pid}/approve", response_model=ProcurementOut)
+def approve(pid: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)) -> ProcurementOut:
+    """✋ Вторая точка утверждения: обоснование НМЦК утверждает контрактный управляющий."""
+    p = get_own(db, pid, user)
+    if not (p.analysis or {}).get("ready"):
+        raise err(422, "not_ready", "Расчёт по методике не готов.")
+    try:
+        transition(db, p, Status.APPROVED, actor_kind="human", user=user,
+                   details={"total_nmck": p.analysis.get("total_nmck")})
+    except TransitionError as e:
+        raise err(409, "bad_transition", str(e)) from e
+    db.commit()
     return to_out(p, db)

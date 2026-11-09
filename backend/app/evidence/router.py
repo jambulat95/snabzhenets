@@ -13,7 +13,7 @@ from ..models import Evidence, JournalEntry, User
 from . import store
 
 router = APIRouter(prefix="/api/evidence", tags=["evidence"])
-MEDIA = {"screenshot": "image/jpeg", "html": "text/plain; charset=utf-8"}
+MEDIA = {"screenshot": "image/jpeg", "html": "text/plain; charset=utf-8", "email": "text/plain; charset=utf-8"}
 
 
 def get_visible(db: Session, sha: str, user: User) -> Evidence:
@@ -30,7 +30,7 @@ def get_visible(db: Session, sha: str, user: User) -> Evidence:
 def file(sha: str, user: User = Depends(get_current_user), db: Session = Depends(get_db)) -> Response:
     ev = get_visible(db, sha, user)
     path = store.root() / ev.path
-    if ev.kind == "html":
+    if ev.kind in ("html", "email"):
         # HTML магазина отдаём как текст, а не страницу: чужие скрипты в нашем окне не исполняются
         return Response(path.read_bytes(), media_type=MEDIA["html"], headers={"Content-Disposition": "inline"})
     return FileResponse(path, media_type=MEDIA.get(ev.kind, "application/octet-stream"))

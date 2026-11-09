@@ -66,6 +66,8 @@ class Procurement(Base):
     parse_meta: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     # Демо: «Ускорить время» сдвигает часы заявки (таймеры напоминаний и срока сбора)
     time_shift_hours: Mapped[int] = mapped_column(Integer, default=0)
+    # Последний расчёт по методике (methodology.engine): вердикты, средние, CV, НМЦК
+    analysis: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
 
     items: Mapped[list["SpecItem"]] = relationship(
         back_populates="procurement", order_by="SpecItem.line_no", cascade="all, delete-orphan"
@@ -165,6 +167,12 @@ class PriceQuote(Base):
     match: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
     status: Mapped[str] = mapped_column(String(20))
     notes: Mapped[list[str]] = mapped_column(JSON, default=list)
+    # Исходный документ цены, кроме страницы сайта: письмо (исходник .eml) или вложение
+    source_sha256: Mapped[str | None] = mapped_column(String(64))
+    candidate_id: Mapped[int | None] = mapped_column(ForeignKey("candidates.id", ondelete="SET NULL"))
+    # Решение человека поверх автоматики: include / exclude, с причиной (CLAUDE.md, 1.5)
+    human_decision: Mapped[str | None] = mapped_column(String(10))
+    human_reason: Mapped[str | None] = mapped_column(Text)
 
 
 class Supplier(Base):
