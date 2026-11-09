@@ -14,7 +14,7 @@ from sqlalchemy import delete, select, text
 from sqlalchemy.orm import Session
 
 from .db import SessionLocal
-from .models import Evidence, JournalEntry, Organization, Procurement, User
+from .models import Evidence, InboundMessage, JournalEntry, Organization, Procurement, User
 from .security import hash_password
 
 ACCOUNTS_FILE = Path(__file__).resolve().parents[1] / "demo_accounts.txt"
@@ -52,6 +52,7 @@ def reset(db: Session) -> None:
     db.execute(text("SET LOCAL app.journal_reset = 'on'"))
     db.execute(delete(JournalEntry))
     db.execute(delete(Procurement))
+    db.execute(delete(InboundMessage))  # и письма, не привязанные к заявке
     db.execute(delete(Evidence))
 
 

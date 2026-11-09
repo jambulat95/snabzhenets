@@ -1,0 +1,8 @@
+{
+ "text": "{\"addressed_to_agent\": false, \"lines\": [{\"per_pack\": false, \"request_line_no\": 1, \"price_raw\": \"12990\", \"is_analog\": false, \"quantity_raw\": \"20\", \"unit_raw\": \"шт\", \"pack_size_raw\": null, \"delivery_days_raw\": \"7 рабочих дней\", \"availability\": \"to_order\", \"prices_with_vat\": \"с НДС 22 %\", \"valid_days_raw\": \"14 дней\", \"delivery_price_raw\": null}, {\"per_pack\": false, \"request_line_no\": 2, \"price_raw\": \"32660\", \"is_analog\": false, \"quantity_raw\": \"2\", \"unit_raw\": \"шт\", \"pack_size_raw\": null, \"delivery_days_raw\": \"7 рабочих дней\", \"availability\": \"to_order\", \"prices_with_vat\": \"с НДС 22 %\", \"valid_days_raw\": \"14 дней\", \"delivery_price_raw\": null}, {\"per_pack\": true, \"request_line_no\": 3, \"price_raw\": \"471\", \"is_analog\": false, \"quantity_raw\": \"50\", \"unit_raw\": \"упак\", \"pack_size_raw\": null, \"delivery_days_raw\": \"7 рабочих дней\", \"availability\": \"to_order\", \"prices_with_vat\": \"с НДС 22 %\", \"valid_days_raw\": \"14 дней\", \"delivery_price_raw\": null}], \"prices_with_vat\": null, \"valid_days_raw\": null, \"delivery_price_raw\": null}",
+ "prompt_tokens": 740,
+ "completion_tokens": 394,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:41"
+}

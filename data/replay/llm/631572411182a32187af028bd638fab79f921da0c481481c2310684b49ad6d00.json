@@ -1,0 +1,8 @@
+{
+ "text": "{\"differences\": [], \"reason\": \"Товар полностью соответствует позиции — бумага формата А4, характеристики не уточнены в позиции\", \"confidence\": \"high\", \"matches\": true}",
+ "prompt_tokens": 405,
+ "completion_tokens": 38,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:27"
+}

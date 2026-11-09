@@ -61,6 +61,11 @@ def _save_state(s: dict[str, Any]) -> None:
     _state_path().write_text(json.dumps(s, ensure_ascii=False), "utf-8")
 
 
+def reset_state() -> None:
+    """Сброс демо: симулятор забывает прежние запросы."""
+    _state_path().unlink(missing_ok=True)
+
+
 def lines_of(body: str) -> list[dict[str, Any]]:
     return [{"no": int(m.group(1)), "name": m.group(2), "qty": Decimal(m.group(3).replace(",", ".")),
              "unit": m.group(4), "okpd2": m.group(5)} for m in LINE.finditer(body)]

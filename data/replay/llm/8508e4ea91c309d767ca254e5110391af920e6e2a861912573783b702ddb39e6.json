@@ -1,0 +1,8 @@
+{
+ "text": "{\"differences\": [], \"reason\": \"Товар полностью соответствует позиции — это проектор, никаких характеристик в позиции не указано\", \"confidence\": \"high\", \"matches\": true}",
+ "prompt_tokens": 419,
+ "completion_tokens": 36,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:25"
+}

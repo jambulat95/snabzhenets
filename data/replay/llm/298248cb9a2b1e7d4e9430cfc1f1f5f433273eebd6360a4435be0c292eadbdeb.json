@@ -1,0 +1,8 @@
+{
+ "text": "{\"positions\": [{\"name\": \"Бумага А4 80 г/м2\", \"article\": null, \"unit_raw\": \"пачек\", \"line\": 4, \"quantity_raw\": \"50\"}]}",
+ "prompt_tokens": 425,
+ "completion_tokens": 49,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:20"
+}

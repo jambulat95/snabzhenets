@@ -79,6 +79,7 @@ export interface Me {
   role_title: string;
   org_id: number;
   org_name: string;
+  demo_mode: boolean;
 }
 
 export interface KtruCandidate {

@@ -1,0 +1,8 @@
+{
+ "text": "{\"positions\": [{\"name\": \"Проектор для аудитории\", \"article\": null, \"unit_raw\": \"шт.\", \"line\": 3, \"quantity_raw\": \"2\"}]}",
+ "prompt_tokens": 418,
+ "completion_tokens": 42,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:20"
+}

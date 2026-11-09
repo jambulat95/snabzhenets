@@ -13,7 +13,8 @@ from sqlalchemy import delete
 
 from .. import journal
 from ..ai.contract import TOKEN_BUDGET, Kind
-from ..ai.gateway import AgentNotSure, Gateway, MemorySink, build_gateway_from_env, load_prompt
+from ..ai.gateway import AgentNotSure, Gateway, MemorySink, load_prompt
+from ..ai.replay import gateway as llm_gateway
 from ..ai.screening import detect_injection
 from ..db import SessionLocal
 from ..evidence import store
@@ -59,7 +60,7 @@ async def collect(procurement_id: int, web: WebPricePort | None = None, gw: Gate
     """Собрать цены с сайтов по всем позициям. Возвращает число сохранённых цен."""
     web = web or port()
     sink = MemorySink()
-    gw = (gw or build_gateway_from_env()).bind(sink)
+    gw = (gw or llm_gateway()).bind(sink)
     with SessionLocal() as db:
         proc = db.get(Procurement, procurement_id)
         if proc is None:

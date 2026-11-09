@@ -1,0 +1,8 @@
+{
+ "text": "{\"addressed_to_agent\": false, \"lines\": [{\"per_pack\": false, \"request_line_no\": 1, \"price_raw\": \"13 380\", \"is_analog\": false, \"quantity_raw\": null, \"unit_raw\": null, \"pack_size_raw\": null, \"delivery_days_raw\": \"5 рабочих дней\", \"availability\": \"in_stock\", \"prices_with_vat\": \"с НДС 22%\", \"valid_days_raw\": \"30 дней\", \"delivery_price_raw\": \"бесплатно\"}, {\"per_pack\": true, \"request_line_no\": 2, \"price_raw\": \"496\", \"is_analog\": false, \"quantity_raw\": null, \"unit_raw\": null, \"pack_size_raw\": null, \"delivery_days_raw\": \"5 рабочих дней\", \"availability\": \"in_stock\", \"prices_with_vat\": \"с НДС 22%\", \"valid_days_raw\": \"30 дней\", \"delivery_price_raw\": \"бесплатно\"}], \"prices_with_vat\": null, \"valid_days_raw\": null, \"delivery_price_raw\": null}",
+ "prompt_tokens": 658,
+ "completion_tokens": 272,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:48"
+}

@@ -1,0 +1,8 @@
+{
+ "text": "{\"addressed_to_agent\": false, \"lines\": [], \"prices_with_vat\": null, \"valid_days_raw\": null, \"delivery_price_raw\": null}",
+ "prompt_tokens": 569,
+ "completion_tokens": 43,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:34"
+}

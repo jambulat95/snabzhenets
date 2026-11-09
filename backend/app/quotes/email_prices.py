@@ -21,7 +21,8 @@ from sqlalchemy.orm import Session
 from .. import journal
 from ..ai.contract import TOKEN_BUDGET, Kind
 from ..ai.email_offer import VAT, letter_numbers, read_letter, vat_mode, verify
-from ..ai.gateway import AgentNotSure, Gateway, MemorySink, build_gateway_from_env, load_prompt
+from ..ai.gateway import AgentNotSure, Gateway, MemorySink, load_prompt
+from ..ai.replay import gateway as llm_gateway
 from ..db import SessionLocal
 from ..evidence import store
 from ..llm_log import record_calls
@@ -167,7 +168,7 @@ def peers(db: Session, proc: Procurement, items: list[SpecItem]) -> dict[int, li
 async def process(procurement_id: int, gw: Gateway | None = None) -> int:
     """Разобрать новые ответы поставщиков заявки. Возвращает число новых цен."""
     sink = MemorySink()
-    gw = (gw or build_gateway_from_env()).bind(sink)
+    gw = (gw or llm_gateway()).bind(sink)
     total = 0
     with SessionLocal() as db:
         proc = db.get(Procurement, procurement_id)

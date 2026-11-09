@@ -1,0 +1,8 @@
+{
+ "text": "{\"differences\": [], \"reason\": \"Товар полностью соответствует позиции по формату и плотности бумаги\", \"confidence\": \"high\", \"matches\": true}",
+ "prompt_tokens": 432,
+ "completion_tokens": 32,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:27"
+}

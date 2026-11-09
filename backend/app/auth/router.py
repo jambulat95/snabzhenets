@@ -45,12 +45,14 @@ class MeResponse(BaseModel):
     role_title: str
     org_id: int
     org_name: str
+    demo_mode: bool
 
 
 def to_me(user: User) -> MeResponse:
     return MeResponse(
         id=user.id, email=user.email, full_name=user.full_name, role=user.role,
         role_title=ROLE_TITLES.get(user.role, user.role), org_id=user.org_id, org_name=user.org.short_name,
+        demo_mode=settings.demo_mode,
     )
 
 

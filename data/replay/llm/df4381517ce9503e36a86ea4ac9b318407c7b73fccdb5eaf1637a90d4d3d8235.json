@@ -1,0 +1,8 @@
+{
+ "text": "{\"differences\": [], \"reason\": \"Картридж HP CF259A совместим с HP LaserJet Pro M428, является оригинальным\", \"confidence\": \"high\", \"matches\": true}",
+ "prompt_tokens": 397,
+ "completion_tokens": 41,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:24"
+}

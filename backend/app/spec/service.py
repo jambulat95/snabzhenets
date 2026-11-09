@@ -9,8 +9,9 @@ from typing import Any
 from sqlalchemy import delete
 
 from .. import journal
-from ..ai.gateway import AgentNotSure, MemorySink, build_gateway_from_env
+from ..ai.gateway import AgentNotSure, MemorySink
 from ..ai.parse import ParsedRequest, parse_request
+from ..ai.replay import gateway as llm_gateway
 from ..ai.screening import detect_injection
 from ..db import SessionLocal
 from ..llm_log import record_calls
@@ -63,7 +64,7 @@ async def run_parse(procurement_id: int) -> None:
         text, org_id = proc.source_text, proc.org_id
 
     sink = MemorySink()
-    gw = build_gateway_from_env().bind(sink)
+    gw = llm_gateway().bind(sink)
     suspicious = detect_injection(text)
     try:
         parsed = await parse_request(gw, text)

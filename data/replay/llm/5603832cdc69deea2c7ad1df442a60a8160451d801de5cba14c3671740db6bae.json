@@ -1,0 +1,8 @@
+{
+ "text": "{\"deadline_raw\": \"к началу семестра\", \"requirements\": [{\"mandatory\": true, \"text\": \"оригинальные картриджи для HP LaserJet Pro M428\", \"line\": 2}, {\"mandatory\": false, \"text\": \"проектор для аудитории\", \"line\": 3}, {\"mandatory\": false, \"text\": \"бумага А4 80 г/м2\", \"line\": 4}], \"kind\": \"order\"}",
+ "prompt_tokens": 408,
+ "completion_tokens": 98,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:20"
+}

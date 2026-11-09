@@ -1,0 +1,8 @@
+{
+ "text": "{\"positions\": [{\"name\": \"Картриджи для HP LaserJet Pro M428, оригинальные\", \"article\": null, \"unit_raw\": \"шт.\", \"line\": 2, \"quantity_raw\": \"20\"}]}",
+ "prompt_tokens": 441,
+ "completion_tokens": 51,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:20"
+}

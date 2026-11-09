@@ -1,0 +1,8 @@
+{
+ "text": "{\"summary\": \"Нужны ли только оригинальные картриджи HP или подойдут совместимые?\", \"topic\": \"original_or_compatible\", \"is_question\": true, \"item_line\": 1}",
+ "prompt_tokens": 338,
+ "completion_tokens": 41,
+ "provider": "yandexgpt",
+ "model": "yandexgpt-5.1",
+ "recorded_at": "2026-11-09T09:12:34"
+}

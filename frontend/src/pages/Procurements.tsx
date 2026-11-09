@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Card, Empty, Table, Typography } from "antd";
+import { App, Button, Card, Empty, Space, Table, Typography } from "antd";
 import { FileAddOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 
 import { api, type Procurement } from "../api";
 import StatusTag from "../components/StatusTag";
 import { STATUS_TONE } from "../labels";
+import { useAuth } from "../auth";
+import ConfirmAction from "../components/ConfirmAction";
 
 export default function Procurements() {
   const [rows, setRows] = useState<Procurement[] | null>(null);
   const navigate = useNavigate();
+  const { me } = useAuth();
+  const { message } = App.useApp();
 
   useEffect(() => {
     const load = () => api<Procurement[]>("/procurements").then(setRows).catch(() => setRows([]));
@@ -25,9 +29,27 @@ export default function Procurements() {
         <Typography.Title level={2} style={{ margin: 0 }}>
           Заявки
         </Typography.Title>
-        <Button type="primary" icon={<FileAddOutlined />} onClick={() => navigate("/procurements/new")}>
-          Новая заявка
-        </Button>
+        <Space>
+          {me?.demo_mode && me.role !== "initiator" && (
+            <ConfirmAction
+              title="Сбросить демо-сценарий"
+              okText="Сбросить"
+              danger
+              buttonText="Сбросить демо"
+              onConfirm={async () => {
+                await api("/demo/reset", { method: "POST" });
+                setRows([]);
+                message.success("Демо сброшено: заявок нет, учётки и поставщики на месте");
+              }}
+            >
+              Удалятся все заявки, цены, письма, доказательства и журнал. Учётные записи, демо-поставщики и записанные
+              данные (страницы магазинов, ответы моделей) останутся.
+            </ConfirmAction>
+          )}
+          <Button type="primary" icon={<FileAddOutlined />} onClick={() => navigate("/procurements/new")}>
+            Новая заявка
+          </Button>
+        </Space>
       </div>
       <Card>
         <Table<Procurement>
