@@ -17,7 +17,7 @@ from .. import journal
 from ..config import settings
 from ..models import Evidence, JournalEntry
 
-EXT = {"screenshot": "jpg", "html": "html", "email": "eml", "attachment": "bin"}
+EXT = {"screenshot": "jpg", "html": "html", "email": "eml", "attachment": "bin", "document": "docx"}
 
 
 def root() -> Path:

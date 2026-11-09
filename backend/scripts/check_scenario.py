@@ -6,6 +6,7 @@
 Код выхода 0 — сценарий прошёл.
 """
 
+import hashlib
 import sys
 import time
 from pathlib import Path
@@ -83,9 +84,18 @@ def main() -> int:
         p = c.get(f"{API}/procurements/{pid}").json()
     a = p["analysis"]
     print(f"6. Итог: {p['status_title']}, НМЦК {a['total_nmck']} ₽")
+    draft = c.get(f"{API}/procurements/{pid}/justification.docx")
+    print(f"7. Проект обоснования: HTTP {draft.status_code}, {len(draft.content) // 1024} КБ")
+    p = c.post(f"{API}/procurements/{pid}/approve").json()
+    doc = c.get(f"{API}/procurements/{pid}/justification.docx")
+    sha = hashlib.sha256(doc.content).hexdigest()
+    stored = c.get(f"{API}/evidence/{sha}/verify").json().get("ok", False)  # утверждённый файл — в журнале
+    print(f"8. Утверждено: {p['status_title']}; документ {len(doc.content) // 1024} КБ, "
+          f"хеш в журнале и файл не изменён: {stored}")
     chain = c.get(f"{API}/journal/verify").json()
-    print(f"7. Журнал: {'цел' if chain['ok'] else 'НАРУШЕН'}, записей {chain['checked']}")
-    ok = p["status"] == "justification_review" and a["ready"] and chain["ok"]
+    print(f"9. Журнал: {'цел' if chain['ok'] else 'НАРУШЕН'}, записей {chain['checked']}")
+    ok = (p["status"] == "approved" and a["ready"] and chain["ok"] and draft.status_code == 200
+          and doc.status_code == 200 and doc.content[:2] == b"PK" and stored)
     print("СЦЕНАРИЙ ПРОШЁЛ" if ok else "СЦЕНАРИЙ НЕ ПРОШЁЛ")
     return 0 if ok else 1
 

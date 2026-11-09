@@ -58,7 +58,7 @@ def letter_with_attachments(m: InboundMessage) -> tuple[str, str]:
     parts, how = [m.body_text], "letter"
     for a in m.attachments:
         if a["content_type"] == XLSX or (a.get("filename") or "").lower().endswith(".xlsx"):
-            ev_path = store.root() / store.path_for(a["sha256"], "attachment").relative_to(store.root())
+            ev_path = store.path_for(a["sha256"], "attachment")
             parts.append(f"\nВложение {a.get('filename')}:\n" + xlsx_text(ev_path.read_bytes()))
             how = "excel"
     return "\n".join(parts), how

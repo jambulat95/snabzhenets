@@ -1,10 +1,11 @@
 """API заявок: создание из текста, просмотр, правка спецификации, подтверждение человеком."""
 
-from datetime import datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Any
+from urllib.parse import quote
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response
 from pydantic import BaseModel, Field
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -14,6 +15,8 @@ from ..analysis import run_analysis
 from ..auth.deps import get_current_user
 from ..config import settings
 from ..db import get_db
+from ..documents import nmck_docx
+from ..evidence import store
 from ..models import (
     Candidate,
     InboundMessage,
@@ -437,5 +440,31 @@ def approve(pid: int, user: User = Depends(get_current_user), db: Session = Depe
                    details={"total_nmck": p.analysis.get("total_nmck")})
     except TransitionError as e:
         raise err(409, "bad_transition", str(e)) from e
+    # Утверждённый документ — доказательство: файл по sha256, хеш в журнале (подмена обнаружится)
+    data = nmck_docx.build(db, p)
+    ev = store.save(db, org_id=p.org_id, procurement_id=p.id, data=data, kind="document", url=None,
+                    captured_at=datetime.now(UTC), meta={"title": "Обоснование НМЦК (утверждено)",
+                                                         "number": p.number})
+    journal.record(db, org_id=p.org_id, procurement_id=p.id, action="justification_approved", actor_kind="human",
+                   actor_user_id=user.id, evidence_sha256=ev.sha256,
+                   details={"total_nmck": p.analysis.get("total_nmck"), "bytes": len(data)})
     db.commit()
     return to_out(p, db)
+
+
+@router.get("/procurements/{pid}/justification.docx", response_model=None)
+def justification(pid: int, user: User = Depends(get_current_user), db: Session = Depends(get_db)) -> Response:
+    """Обоснование НМЦК: утверждённое — сохранённый файл; до утверждения — проект по текущему расчёту."""
+    p = get_own(db, pid, user)
+    if not (p.analysis or {}).get("items"):
+        raise err(409, "not_ready", "Расчёт по методике ещё не выполнен.")
+    final = db.scalar(select(JournalEntry).where(JournalEntry.procurement_id == p.id,
+                                                 JournalEntry.action == "justification_approved")
+                      .order_by(JournalEntry.seq.desc()).limit(1))
+    if final is not None and final.evidence_sha256:
+        data = store.path_for(final.evidence_sha256, "document").read_bytes()
+        name = f"Обоснование_НМЦК_{p.number}.docx"
+    else:
+        data, name = nmck_docx.build(db, p), f"Обоснование_НМЦК_{p.number}_проект.docx"
+    return Response(data, media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    headers={"Content-Disposition": f"attachment; filename*=UTF-8''{quote(name)}"})

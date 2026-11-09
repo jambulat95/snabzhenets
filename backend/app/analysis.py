@@ -4,7 +4,7 @@
 нажал «Завершить сбор». Анализ пересчитывается после каждого решения человека по цене.
 """
 
-from datetime import timedelta
+from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -70,6 +70,7 @@ def run_analysis(db: Session, proc: Procurement, actor: User | None = None) -> d
     items = [ItemIn(id=i.id, line_no=i.line_no, name=i.name, quantity=i.quantity or 0) for i in proc.items]
     sent = sum(1 for c in cands.values() if c.selected and c.request_status != "none")
     res = evaluate(items, quotes, sent, now(proc), proc.profile)
+    res["computed_at"] = datetime.now(UTC).isoformat()  # реальное время расчёта; давность цен — по часам заявки
     proc.analysis = res
     journal.record(db, org_id=proc.org_id, procurement_id=proc.id, action="analysis_done", actor_kind="agent",
                    decision="ready" if res["ready"] else "needs_human",

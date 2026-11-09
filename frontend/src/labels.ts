@@ -51,6 +51,7 @@ export const ACTION_TITLES: Record<string, string> = {
   question_to_human: "Вопрос поставщика — человеку",
   analysis_done: "Расчёт по методике",
   quote_decision: "Решение человека по цене",
+  justification_approved: "Утверждённое обоснование сохранено",
 };
 
 export const ACTOR_TITLES = { human: "Человек", agent: "Агент", system: "Система" } as const;

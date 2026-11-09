@@ -1,6 +1,7 @@
 // Методика (приказ № 567): по позициям — сколько цен в расчёте, средняя, коэффициент вариации, НМЦК; итог;
 // что мешает. Утверждает контрактный управляющий — вторая точка утверждения.
-import { Alert, Button, Card, Descriptions, Table, Typography } from "antd";
+import { Alert, Button, Card, Descriptions, Space, Table, Typography } from "antd";
+import { FileWordOutlined } from "@ant-design/icons";
 
 import { api, type Procurement } from "../api";
 import { useAuth } from "../auth";
@@ -82,9 +83,17 @@ export default function AnalysisCard({ p, run }: { p: Procurement; run: (fn: () 
         ]}
       />
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 16, gap: 16 }}>
-        <Typography.Title level={4} style={{ margin: 0 }}>
-          НМЦК: {a.ready ? rub(a.total_nmck) : "не рассчитана"}
-        </Typography.Title>
+        <Space size={16} wrap>
+          <Typography.Title level={4} style={{ margin: 0 }}>
+            НМЦК: {a.ready ? rub(a.total_nmck) : "не рассчитана"}
+          </Typography.Title>
+          {(p.status === "justification_review" || p.status === "approved") && (
+            <Button icon={<FileWordOutlined />} href={`/api/procurements/${p.id}/justification.docx`}>
+              {p.status === "approved" ? "Обоснование (DOCX)" : "Проект обоснования (DOCX)"}
+            </Button>
+          )}
+          {p.status === "approved" && <StatusTag tone="success">Утверждено</StatusTag>}
+        </Space>
         {p.status === "analysis" && !a.ready && (
           <Button onClick={() => run(() => api<Procurement>(`/procurements/${p.id}/reanalyse`, { method: "POST" }))}>
             Пересчитать
